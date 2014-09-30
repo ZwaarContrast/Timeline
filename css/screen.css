@@ -1,0 +1,98 @@
+body{
+  margin:0;
+  background: #2c2c2c;
+}
+.timeline{
+  position:absolute;
+  width: 100%;
+  height: 100%;
+  overflow:hidden;
+} 
+.timeline-handle{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  white-space: nowrap;
+  font-size:0;
+}
+.timeline-handle.is-timeline-handle-animating{
+  -moz-backface-visibility:hidden;
+  -o-backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
+  backface-visibility: hidden;
+
+  -moz-transition: -moz-transform 500ms linear;
+  -o-transition: -o-transform 500ms linear;
+  -webkit-transition: -webkit-transform 500ms linear;
+  transition: height 500ms linear;
+}
+.timeline-slide{
+  position: relative;
+  display: inline-block;
+  height: 100%;
+  background: #2c2c2c;
+}
+.timeline-slide-wrapper{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-size: 0;
+}
+.timeline-slide-image{
+  position:absolute;
+  display: block;
+  width:101%;
+  width:calc(100% + 2px);
+  height: auto;
+}
+@media screen and (max-aspect-ratio: 1600/1066){
+  .timeline-slide-image{
+      height:101%;
+      height:calc(100% + 2px);
+      width: auto;
+  }
+}
+.timeline-dragger{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 50%;
+  left: 50%;
+  -moz-transform:translate3d(-50%,-50%,0);
+  -o-transform:translate3d(-50%,-50%,0);
+  transform: translate3d(-50%,-50%,0);
+  -webkit-transform: translate3d(-50%,-50%,0);
+}
+
+.timeline-min .timeline-dragger-max,
+.timeline-max .timeline-dragger-min {
+  -moz-transition: -moz-transform 0.4s cubic-bezier(.7,0,.3,1);
+  -o-transition: -o-transform 0.4s cubic-bezier(.7,0,.3,1);
+  -webkit-transition: -webkit-transform 0.4s cubic-bezier(.7,0,.3,1);
+  transition: transform 0.4s cubic-bezier(.7,0,.3,1);
+  
+  -moz-backface-visibility:hidden;
+  -o-backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
+  backface-visibility: hidden;
+}
+.timeline-dragger-min .timeline-slide{
+  cursor:pointer;
+}
+
+#prev, #next, #toggle,#disable{
+  z-index:10;
+  position:absolute;
+  top:20px;
+  width:80px;
+  height:80px;
+  background-color:black;
+  opacity:0.5;
+  color: white;
+}
+#prev{left:0;}
+#next{left:100px;}
+#toggle{left:200px;}
+#disable{left:300px;}
