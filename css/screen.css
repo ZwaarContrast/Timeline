@@ -1,3 +1,4 @@
+/*  Timeline styling */
 body{
   margin:0;
   background: #2c2c2c;
@@ -5,8 +6,10 @@ body{
 .timeline{
   position:absolute;
   width: 100%;
-  height: 100%;
+  height: 1080px;
   overflow:hidden;
+  top:0;
+  left:0;
 } 
 .timeline-handle{
   position: absolute;
@@ -22,10 +25,10 @@ body{
   -webkit-backface-visibility:hidden;
   backface-visibility: hidden;
 
-  -moz-transition: -moz-transform 200ms linear;
-  -o-transition: -o-transform 200ms linear;
-  -webkit-transition: -webkit-transform 200ms linear;
-  transition: transform 200ms linear;
+  -moz-transition: -moz-transform 300ms linear;
+  -o-transition: -o-transform 300ms linear;
+  -webkit-transition: -webkit-transform 300ms linear;
+  transition: transform 300ms linear;
 }
 .timeline-slide{
   position: relative;
@@ -68,10 +71,14 @@ body{
 
 .timeline-min .timeline-dragger-max,
 .timeline-max .timeline-dragger-min {
-  -moz-transition: -moz-transform 0.4s cubic-bezier(.7,0,.3,1);
+/*  -moz-transition: -moz-transform 0.4s cubic-bezier(.7,0,.3,1);
   -o-transition: -o-transform 0.4s cubic-bezier(.7,0,.3,1);
   -webkit-transition: -webkit-transform 0.4s cubic-bezier(.7,0,.3,1);
-  transition: transform 0.4s cubic-bezier(.7,0,.3,1);
+  transition: transform 0.4s cubic-bezier(.7,0,.3,1);*/
+    -moz-transition: -moz-transform 300ms linear;
+  -o-transition: -o-transform 300ms linear;
+  -webkit-transition: -webkit-transform 300ms linear;
+  transition: transform 300ms linear;
   
   -moz-backface-visibility:hidden;
   -o-backface-visibility:hidden;
@@ -82,6 +89,7 @@ body{
   cursor:pointer;
 }
 
+/*  Timeline controls styling */
 #prev, #next, #toggle,#disable{
   z-index:10;
   position:absolute;
@@ -96,3 +104,143 @@ body{
 #next{left:100px;}
 #toggle{left:200px;}
 #disable{left:300px;}
+
+/*  Period styling */
+.period{
+  margin-top:1080px;
+  background-color:white;
+  padding:140px 0;
+}
+.period-content{
+  font-family:'Droid Serif';
+  font-size:18px;
+  line-height:32px;
+  width:600px;
+  margin:0 auto 36px auto;
+}
+
+/*  Timeline line styling */
+.timelineline {
+  position: fixed;
+  top: 50%;
+  width:100%;
+  transform:translate3d(0,-50%,0);
+}
+
+.timelineline-handle {
+  position: absolute;
+  top: 0;
+  white-space: nowrap;
+  font-size:0;
+  left:0;
+  
+  -moz-backface-visibility:hidden;
+  -o-backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
+  backface-visibility: hidden;
+
+  -moz-transition: -moz-transform 300ms linear, width 300ms linear;
+  -o-transition: -o-transform 300ms linear, width 300ms linear;
+  -webkit-transition: -webkit-transform 300ms linear, width 300ms linear;
+  transition: transform 300ms linear, width 300ms linear;
+}
+.timelineline-handle.not-timelineline-handle-animating{
+  -moz-transition: none;
+  -o-transition: none;
+  -webkit-transition: none;
+  transition: none;
+}
+
+.timelineline-slide {
+  position: relative;
+  display: inline-block;
+  overflow:hidden;
+}
+.timelineline h2{
+  margin: 0 0 0 100px;
+  font-family: 'Dawning of a New Day';
+  font-size: 70px;
+  text-transform: lowercase;
+  line-height: 70px;
+  color: white;
+  position:relative;
+  overflow:visible;
+  display:inline-block;
+  font-weight:normal;
+
+  -moz-transition:font-size 300ms linear, margin 300ms linear;
+  -o-transition:font-size 300ms linear, margin 300ms linear;
+  -webkit-transition:font-size 300ms linear, margin 300ms linear;
+  transition: font-size 300ms linear, margin 300ms linear;
+}
+.timelineline.timelineline-min h2{
+  font-size:40px;
+  margin-left:0;
+}
+.timelineline h3{
+  font-family: 'Montserrat';
+  font-size: 18px;
+  text-transform: lowercase;
+  line-height: 24px;
+   color: white;
+   position:relative;
+   overflow:visible;
+   text-align:left;
+   margin:0 0 0 100px;
+   font-weight:bold;
+
+ -moz-transition:margin 300ms linear;
+  -o-transition:margin 300ms linear;
+  -webkit-transition:margin 300ms linear;
+  transition: margin 300ms linear;
+
+}
+.timelineline.timelineline-min h3{
+  margin-left:0;
+}
+
+.timelineline h2::before{
+  content:'';
+  position:absolute;
+  top:50px;
+  right:100%;
+  border-top:2px white solid;
+  width:100px;
+   -moz-transition:top 300ms linear;
+  -o-transition:top 300ms linear;
+  -webkit-transition:top 300ms linear;
+  transition: top 300ms linear;
+}
+.timelineline h2::after{
+  content:'';
+  position:absolute;
+  top:50px;
+  left:100%;
+  border-top:2px white solid;
+  width:2000px;
+
+   -moz-transition:top 300ms linear;
+  -o-transition:top 300ms linear;
+  -webkit-transition:top 300ms linear;
+  transition: top 300ms linear;
+}
+.timelineline.timelineline-min h2::after{
+  top:40px;
+}
+.timelineline.timelineline-min h2::before{
+  top:40px;
+}
+
+/* Styling for clipthru script */
+.timelineline.testclass-0 h2{
+  color:black;
+}
+.timeline-content.testclass-0 h3{
+  color:black;
+}
+.timeline-content.testclass-0 h2::before{
+  border-top:2px black solid;
+}
+.timeline-content.testclass-0 h2::after{
+  border-top:0px;
+}
