@@ -2,12 +2,12 @@
 body{
   margin:0;
   background: #2c2c2c;
+  overflow:hidden;
 }
 .timeline{
   position:absolute;
   width: 100%;
   height: 1080px;
-  overflow:hidden;
   top:0;
   left:0;
 } 
@@ -18,13 +18,11 @@ body{
   height: 100%;
   white-space: nowrap;
   font-size:0;
+
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
 }
 .timeline-handle.is-timeline-handle-animating{
-  -moz-backface-visibility:hidden;
-  -o-backface-visibility:hidden;
-  -webkit-backface-visibility:hidden;
-  backface-visibility: hidden;
-
   -moz-transition: -moz-transform 300ms linear;
   -o-transition: -o-transform 300ms linear;
   -webkit-transition: -webkit-transform 300ms linear;
@@ -42,6 +40,7 @@ body{
   height: 100%;
   overflow: hidden;
   font-size: 0;
+  z-index:100;
 }
 .timeline-slide-image{
   position:absolute;
@@ -49,6 +48,10 @@ body{
   width:101%;
   width:calc(100% + 2px);
   height: auto;
+   -moz-backface-visibility:hidden;
+  -o-backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
+  backface-visibility: hidden;
 }
 @media screen and (max-aspect-ratio: 1600/1066){
   .timeline-slide-image{
@@ -75,15 +78,11 @@ body{
   -o-transition: -o-transform 0.4s cubic-bezier(.7,0,.3,1);
   -webkit-transition: -webkit-transform 0.4s cubic-bezier(.7,0,.3,1);
   transition: transform 0.4s cubic-bezier(.7,0,.3,1);*/
-    -moz-transition: -moz-transform 300ms linear;
-  -o-transition: -o-transform 300ms linear;
-  -webkit-transition: -webkit-transform 300ms linear;
-  transition: transform 300ms linear;
-  
-  -moz-backface-visibility:hidden;
-  -o-backface-visibility:hidden;
-  -webkit-backface-visibility:hidden;
-  backface-visibility: hidden;
+    -moz-transition: -moz-transform 400ms cubic-bezier(.7,0,.3,1);
+  -o-transition: -o-transform 400ms cubic-bezier(.7,0,.3,1);
+  -webkit-transition: -webkit-transform 400ms cubic-bezier(.7,0,.3,1);
+  transition: transform 400ms cubic-bezier(.7,0,.3,1);
+
 }
 .timeline-dragger-min .timeline-slide{
   cursor:pointer;
@@ -134,15 +133,14 @@ body{
   font-size:0;
   left:0;
   
-  -moz-backface-visibility:hidden;
-  -o-backface-visibility:hidden;
-  -webkit-backface-visibility:hidden;
-  backface-visibility: hidden;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
 
-  -moz-transition: -moz-transform 300ms linear, width 300ms linear;
-  -o-transition: -o-transform 300ms linear, width 300ms linear;
-  -webkit-transition: -webkit-transform 300ms linear, width 300ms linear;
-  transition: transform 300ms linear, width 300ms linear;
+  -moz-transition: -moz-transform 
+   cubic-bezier(.7,0,.3,1), width 400ms cubic-bezier(.7,0,.3,1);
+  -o-transition: -o-transform 400ms cubic-bezier(.7,0,.3,1), width 400ms cubic-bezier(.7,0,.3,1);
+  -webkit-transition: -webkit-transform 400ms cubic-bezier(.7,0,.3,1), width 400ms cubic-bezier(.7,0,.3,1);
+  transition: transform 400ms cubic-bezier(.7,0,.3,1), width 400ms cubic-bezier(.7,0,.3,1);
 }
 .timelineline-handle.not-timelineline-handle-animating{
   -moz-transition: none;
@@ -168,10 +166,10 @@ body{
   display:inline-block;
   font-weight:normal;
 
-  -moz-transition:font-size 300ms linear, margin 300ms linear;
-  -o-transition:font-size 300ms linear, margin 300ms linear;
-  -webkit-transition:font-size 300ms linear, margin 300ms linear;
-  transition: font-size 300ms linear, margin 300ms linear;
+  -moz-transition:font-size 400ms cubic-bezier(.7,0,.3,1), margin 400ms cubic-bezier(.7,0,.3,1);
+  -o-transition:font-size 400ms cubic-bezier(.7,0,.3,1), margin 400ms cubic-bezier(.7,0,.3,1);
+  -webkit-transition:font-size 400ms cubic-bezier(.7,0,.3,1), margin 400ms cubic-bezier(.7,0,.3,1);
+  transition: font-size 400ms cubic-bezier(.7,0,.3,1), margin 400ms cubic-bezier(.7,0,.3,1);
 }
 .timelineline.timelineline-min h2{
   font-size:40px;
@@ -189,10 +187,10 @@ body{
    margin:0 0 0 100px;
    font-weight:bold;
 
- -moz-transition:margin 300ms linear;
-  -o-transition:margin 300ms linear;
-  -webkit-transition:margin 300ms linear;
-  transition: margin 300ms linear;
+ -moz-transition:margin 400ms cubic-bezier(.7,0,.3,1);
+  -o-transition:margin 400ms cubic-bezier(.7,0,.3,1);
+  -webkit-transition:margin 400ms cubic-bezier(.7,0,.3,1);
+  transition: margin 400ms cubic-bezier(.7,0,.3,1);
 
 }
 .timelineline.timelineline-min h3{
@@ -206,10 +204,10 @@ body{
   right:100%;
   border-top:2px white solid;
   width:100px;
-   -moz-transition:top 300ms linear;
-  -o-transition:top 300ms linear;
-  -webkit-transition:top 300ms linear;
-  transition: top 300ms linear;
+   -moz-transition:top 400ms cubic-bezier(.7,0,.3,1);
+  -o-transition:top 400ms cubic-bezier(.7,0,.3,1);
+  -webkit-transition:top 400ms cubic-bezier(.7,0,.3,1);
+  transition: top 400ms cubic-bezier(.7,0,.3,1);
 }
 .timelineline h2::after{
   content:'';
@@ -219,10 +217,10 @@ body{
   border-top:2px white solid;
   width:2000px;
 
-   -moz-transition:top 300ms linear;
-  -o-transition:top 300ms linear;
-  -webkit-transition:top 300ms linear;
-  transition: top 300ms linear;
+   -moz-transition:top 400ms cubic-bezier(.7,0,.3,1);
+  -o-transition:top 400ms cubic-bezier(.7,0,.3,1);
+  -webkit-transition:top 400ms cubic-bezier(.7,0,.3,1);
+  transition: top 400ms cubic-bezier(.7,0,.3,1);
 }
 .timelineline.timelineline-min h2::after{
   top:40px;

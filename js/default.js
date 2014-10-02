@@ -2,7 +2,7 @@ $(window).load(function(){
 	$('#timeline').Timeline({propagateEventsElements:$('#timelineline')});
 	$('#timelineline').TimelineLine();
 
-	$('#timeline-content').clipthru({ autoUpdate: true, autoUpdateInterval: true });
+	//$('#timeline-content').clipthru({ autoUpdate: true, autoUpdateInterval: true });
 
 
 	// keyboard navigation events

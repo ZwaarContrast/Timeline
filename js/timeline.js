@@ -24,6 +24,7 @@
 (function($, window, document, undefined) {
 	"use strict";
 
+	var docElem = window.document.documentElement;
 	/*
 	* 	In the constructor we wrap the element on which the plugin is called on in a jQuery object 
 	*	and expose the passed on options for usage in the init function
@@ -89,6 +90,7 @@
 
 			//Variables, plugin wide variables
 			this.slideshowRatio = this.config.slideshowRatio;
+			this.windowWidth = this.getViewport('x');
 
 			//Call functions for initialisation
 			this.getElements();
@@ -170,6 +172,7 @@
 				}
 				_self.reflow();
 				_self.setStep(_self.current,true);
+				_self.windowWidth = _self.getViewport('x');
 				TO = setTimeout(function(){
 					//Do stuff here
 					_self.reflow();
@@ -353,7 +356,7 @@
 			//Calculate perspective
 			var p = this.config.perspective,
 			r = this.config.slideshowRatio,
-			zAxisVal = this.isFullscreen ? p - ( p / r ) : p - p * r;
+			zAxisVal = this.isFullscreen ? p - ( p / r ) : 0;
 
 			//Set transform
 
@@ -377,11 +380,12 @@
 				_self.dragger.classList.add(_self.isFullscreen ? _self.config.draggerClassMin : _self.config.draggerClassMax );
 
 				//Set styling
-				this.style[_self.transformStyle] = _self.isFullscreen ? 'translate3d( -50%, -100%, 0px )':'translate3d( -50%, -50%, 0px )';
-				this.style.width = _self.isFullscreen ? _self.config.slideshowRatio * 100 + '%' : '100%';
-				this.style.height = _self.isFullscreen ? _self.config.slideshowRatio * 100 + '%' : '100%';
+				// this.style[_self.transformStyle] = _self.isFullscreen ? 'translate3d( -50%, -100%, 0px )':'translate3d( -50%, -50%, 0px )';
+				// this.style.width = _self.isFullscreen ? _self.config.slideshowRatio * 100 + '%' : '100%';
+				// this.style.height = _self.isFullscreen ? _self.config.slideshowRatio * 100 + '%' : '100%';
 
 				//Calculate values after resizing
+				_self.isFullscreen = !_self.isFullscreen;
 				_self.reflow();
 
 				//Set slide instantly
@@ -390,7 +394,6 @@
 				_self.dispatchEvent('onToggleViewEnd',this.isFullscreen?true:false);
 
 				//Change status
-				_self.isFullscreen = !_self.isFullscreen;
 				_self.isAnimating = false; 
 			};
 
@@ -492,7 +495,7 @@
 		 * Recalculate values (probably after resize)
 		 */
 		reflow:function(){
-			this.sliderWidth = this.dragger.clientWidth;
+			this.sliderWidth = this.windowWidth;
 		},
 		/*
 		 * Function to set and unset preserve 3d styling
@@ -500,7 +503,7 @@
 		preserve3dSlides:function( add ) {
 			var _self = this;
 			for (var i = 0; i < this.slides.length; i++) {
-				this.slides[i].style[_self.transformStyleStyle] = add ? 'preserve-3d' : '';
+				//this.slides[i].style[_self.transformStyleStyle] = add ? 'preserve-3d' : '';
 			}
 		},
 		/*

@@ -23,6 +23,7 @@
 */
 (function($, window, document, undefined) {
 	"use strict";
+
 	var docElem = window.document.documentElement;
 	/*
 	* 	In the constructor we wrap the element on which the plugin is called on in a jQuery object 
@@ -72,6 +73,7 @@
 
 			//Variables, plugin wide variables
 			this.slideshowRatio = 0.3
+			this.windowWidth = this.getViewport('x');
 
 			//Call functions for initialisation
 			this.getElements();
@@ -135,6 +137,7 @@
 				}
 				_self.reflow();
 				_self.setStep(_self.current,true);
+				_self.windowWidth = _self.getViewport('x');
 				TO = setTimeout(function(){
 					//Do stuff here
 					_self.reflow();
@@ -273,7 +276,11 @@
 		 * Recalculate values (probably after resize)
 		 */
 		reflow:function(){
-			this.sliderWidth = this.slides.get(0).clientWidth;
+			if(this.isFullscreen){
+				this.sliderWidth = this.windowWidth;
+			}else{
+				this.sliderWidth = this.windowWidth * this.config.slideshowRatio;
+			}
 		},
 		/*
 		 * Our own removeclass function, faster than jquery (10x)
