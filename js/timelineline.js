@@ -184,19 +184,22 @@
 			//Set styling
 			this.removeClass(this.handle,this.config.handleClassNotAnimating);
 			_self.handle.style.width = _self.isFullscreen ? _self.config.slideshowRatio * 100*_self.slidesCount + '%' : _self.slidesCount * 100 + '%';
+			
 
 			//Calculate distance for translate
 			var distance;
+
 			if(!this.isFullscreen){
-				distance = this.current*-1*this.getViewport('x');
+				distance = this.current*-1*this.sliderWidth;
 				this.removeClass(this.el,'timelineline-min');
 			}else{
 				//First part before the plus sign is the amount calculated to the middle of the screen
-				distance = (((1-this.config.slideshowRatio)/2)*this.getViewport('x') ) + (this.current*-1*this.getViewport('x')*this.config.slideshowRatio);
+				distance = (((1-this.config.slideshowRatio)/2)*this.sliderWidth ) + (this.current*-1*this.sliderWidth*this.config.slideshowRatio);
 				this.el.classList.add('timelineline-min');
 			}
+
 			//Set distance
-			this.handle.style[this.transformStyle] = 'translate3d('+distance+'px,0,0)';
+			this.handle.style[this.transformStyle] = 'translate3d('+distance+'px,0,0) ';
 
 			_self.isFullscreen = !_self.isFullscreen;
 	
@@ -224,7 +227,7 @@
 					distance = index*-1*this.sliderWidth;
 					//alert(this.sliderWidth);
 				}else{
-					distance = (0.35*this.getViewport('x') )+ (index*-1*$(this.slides[0]).width());
+					distance = (((1-this.config.slideshowRatio)/2)*this.sliderWidth ) + (index*-1*this.sliderWidth*this.config.slideshowRatio);
 				}
 				this.handle.style[this.transformStyle] = 'translate3d('+distance+'px,0,0)';
 
@@ -279,7 +282,7 @@
 			if(this.isFullscreen){
 				this.sliderWidth = this.windowWidth;
 			}else{
-				this.sliderWidth = this.windowWidth * this.config.slideshowRatio;
+				this.sliderWidth = this.windowWidth;
 			}
 		},
 		/*

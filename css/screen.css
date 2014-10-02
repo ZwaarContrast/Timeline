@@ -136,8 +136,7 @@ body{
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
 
-  -moz-transition: -moz-transform 
-   cubic-bezier(.7,0,.3,1), width 400ms cubic-bezier(.7,0,.3,1);
+  -moz-transition: -moz-transform cubic-bezier(.7,0,.3,1), width 400ms cubic-bezier(.7,0,.3,1);
   -o-transition: -o-transform 400ms cubic-bezier(.7,0,.3,1), width 400ms cubic-bezier(.7,0,.3,1);
   -webkit-transition: -webkit-transform 400ms cubic-bezier(.7,0,.3,1), width 400ms cubic-bezier(.7,0,.3,1);
   transition: transform 400ms cubic-bezier(.7,0,.3,1), width 400ms cubic-bezier(.7,0,.3,1);
@@ -153,9 +152,10 @@ body{
   position: relative;
   display: inline-block;
   overflow:hidden;
+  z-index:200;
 }
 .timelineline h2{
-  margin: 0 0 0 100px;
+  margin: 0 0 0 0;
   font-family: 'Dawning of a New Day';
   font-size: 70px;
   text-transform: lowercase;
@@ -166,15 +166,13 @@ body{
   display:inline-block;
   font-weight:normal;
 
-  -moz-transition:font-size 400ms cubic-bezier(.7,0,.3,1), margin 400ms cubic-bezier(.7,0,.3,1);
-  -o-transition:font-size 400ms cubic-bezier(.7,0,.3,1), margin 400ms cubic-bezier(.7,0,.3,1);
-  -webkit-transition:font-size 400ms cubic-bezier(.7,0,.3,1), margin 400ms cubic-bezier(.7,0,.3,1);
-  transition: font-size 400ms cubic-bezier(.7,0,.3,1), margin 400ms cubic-bezier(.7,0,.3,1);
+  -moz-transition:font-size 400ms cubic-bezier(.7,0,.3,1);
+  -o-transition:font-size 400ms cubic-bezier(.7,0,.3,1);
+  -webkit-transition:font-size 400ms cubic-bezier(.7,0,.3,1);
+  transition: font-size 400ms cubic-bezier(.7,0,.3,1);
+
 }
-.timelineline.timelineline-min h2{
-  font-size:40px;
-  margin-left:0;
-}
+
 .timelineline h3{
   font-family: 'Montserrat';
   font-size: 18px;
@@ -184,17 +182,19 @@ body{
    position:relative;
    overflow:visible;
    text-align:left;
-   margin:0 0 0 100px;
+   margin:0;
    font-weight:bold;
-
- -moz-transition:margin 400ms cubic-bezier(.7,0,.3,1);
-  -o-transition:margin 400ms cubic-bezier(.7,0,.3,1);
-  -webkit-transition:margin 400ms cubic-bezier(.7,0,.3,1);
-  transition: margin 400ms cubic-bezier(.7,0,.3,1);
-
 }
-.timelineline.timelineline-min h3{
-  margin-left:0;
+.timelineline-slide-wrapper{
+  transform:translate3d(100px, 0, 0);
+
+   -moz-transition:transform 400ms cubic-bezier(.7,0,.3,1);
+  -o-transition:transform 400ms cubic-bezier(.7,0,.3,1);
+  -webkit-transition:transform 400ms cubic-bezier(.7,0,.3,1);
+  transition: transform 400ms cubic-bezier(.7,0,.3,1);
+}
+.timelineline.timelineline-min .timelineline-slide-wrapper{
+  transform:translate3d(0, 0, 0);
 }
 
 .timelineline h2::before{
