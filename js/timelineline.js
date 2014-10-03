@@ -56,6 +56,8 @@
 			handleClass:'timelineline-handle',
 			handleClassNotAnimating:'not-timelineline-handle-animating',
 			slideClass:'timelineline-slide',
+			slideFontSize: 70,
+			slideFontSizeOverview: 24,
 		},
 
 		/*
@@ -96,7 +98,8 @@
 
 			//Get slider elements
 			this.handle = this.element.find('.'+this.config.handleClass)[0];
-			this.slides = this.element.find('.'+this.config.slideClass);	
+			this.slides = this.element.find('.'+this.config.slideClass);
+			this.slideTitles = this.slides.find('h2');
 		},
 		/*
 		 * 	Function to get data like prefixed styles ans slide amounts
@@ -183,7 +186,10 @@
 
 			//Set styling
 			this.removeClass(this.handle,this.config.handleClassNotAnimating);
-			_self.handle.style.width = _self.isFullscreen ? _self.config.slideshowRatio * 100*_self.slidesCount + '%' : _self.slidesCount * 100 + '%';
+			//_self.handle.style.width = _self.isFullscreen ? _self.config.slideshowRatio * 100*_self.slidesCount + '%' : _self.slidesCount * 100 + '%';
+
+			var handleWidth = _self.isFullscreen ? _self.config.slideshowRatio * 100*_self.slidesCount + '%' : _self.slidesCount * 100 + '%';
+			TweenLite.to(_self.handle, 0.4, {width:handleWidth});
 			
 
 			//Calculate distance for translate
@@ -192,14 +198,19 @@
 			if(!this.isFullscreen){
 				distance = this.current*-1*this.sliderWidth;
 				this.removeClass(this.el,'timelineline-min');
+
+				TweenLite.to(_self.slideTitles, 0.2, {'font-size': this.config.slideFontSize+'px'});
+
 			}else{
 				//First part before the plus sign is the amount calculated to the middle of the screen
 				distance = (((1-this.config.slideshowRatio)/2)*this.sliderWidth ) + (this.current*-1*this.sliderWidth*this.config.slideshowRatio);
 				this.el.classList.add('timelineline-min');
+
+				TweenLite.to(_self.slideTitles, 0.2, {'font-size':this.config.slideFontSizeOverview+'px'});
 			}
 
 			//Set distance
-			this.handle.style[this.transformStyle] = 'translate3d('+distance+'px,0,0) ';
+			TweenLite.to(this.handle,0.4,{x:distance,y:0,z:0.1});
 
 			_self.isFullscreen = !_self.isFullscreen;
 	
@@ -229,7 +240,9 @@
 				}else{
 					distance = (((1-this.config.slideshowRatio)/2)*this.sliderWidth ) + (index*-1*this.sliderWidth*this.config.slideshowRatio);
 				}
-				this.handle.style[this.transformStyle] = 'translate3d('+distance+'px,0,0)';
+				//this.handle.style[this.transformStyle] = 'translate3d('+distance+'px,0,0)';
+
+				TweenLite.to(this.handle,(instant ? 0 : 0.4),{x:distance,y:0,z:0.1});
 
 				//Set current state
 				this.current = index;
