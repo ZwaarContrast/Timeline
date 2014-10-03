@@ -189,7 +189,7 @@
 			//_self.handle.style.width = _self.isFullscreen ? _self.config.slideshowRatio * 100*_self.slidesCount + '%' : _self.slidesCount * 100 + '%';
 
 			var handleWidth = _self.isFullscreen ? _self.config.slideshowRatio * 100*_self.slidesCount + '%' : _self.slidesCount * 100 + '%';
-			TweenLite.to(_self.handle, 0.4, {width:handleWidth});
+			TweenLite.to(_self.handle, 0, {width:handleWidth});
 			
 
 			//Calculate distance for translate
