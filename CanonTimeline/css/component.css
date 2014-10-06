@@ -22,10 +22,6 @@ body,
 	height: 100%;
 }
 
-body{
-	background-color: #333333;
-}
-
 html.js,
 .js body {
 	overflow: hidden;
@@ -72,6 +68,10 @@ html.js,
 
 .timeline-arrow-navigation-arrow-previous{
 	left:0;
+}
+
+.dragslider{
+	background-color: #333333;
 }
 
 .js .dragslider {
