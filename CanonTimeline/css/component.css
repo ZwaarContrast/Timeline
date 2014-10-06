@@ -203,7 +203,7 @@ button.slider-switch:hover {
 	position: absolute;
 	display: block;
 	height: calc(100% + 0.2px);
-	opacity: 0.5;
+	opacity: 1;
 }
 
 @media screen and (min-aspect-ratio: 1280/850) {
