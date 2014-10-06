@@ -147,9 +147,14 @@
 					self.dd.setStep( self.slides.indexOf( slide ) + 1 );
 				}
 			} );
+		} );
 
-			// reveal content
-			slide.querySelector( 'button.content-switch' ).addEventListener( 'click', function() { self._toggleContent( slide ); } );
+
+		document.getElementById( 'timeline-navigation' ).querySelector( 'button.content-switch' ).addEventListener( 'click', function() { 
+			//self._toggleContent( slide ); 
+
+			var currentSlide = $(self.slides).filter('.current');
+			self._toggleContent(currentSlide[0]);
 		} );
 
 		// keyboard navigation events
@@ -310,9 +315,9 @@
 				self._preserve3dSlides();
 			}
 
-			// replace class "img-dragger-large" with "img-dragger-small"
-			classie.remove( this, self.isFullscreen ? 'img-dragger-large' : 'img-dragger-small' );
-			classie.add( this, self.isFullscreen ? 'img-dragger-small' : 'img-dragger-large' );
+			// replace class "img-dragger-large" with "timeline-img-dragger-small"
+			classie.remove( this, self.isFullscreen ? 'timeline-img-dragger-large' : 'timeline-img-dragger-small' );
+			classie.add( this, self.isFullscreen ? 'timeline-img-dragger-small' : 'timeline-img-dragger-large' );
 
 			// reset transforms and set width & height
 			self.imgDragger.style.WebkitTransform = 'translate3d( -50%, -50%, 0px )';
