@@ -279,6 +279,20 @@
 	}
 
 	/**
+	 * Go to next slide
+	 */
+	DragSlideshow.prototype.next = function() {
+		this.dd.setStep( this.current + 2 );
+	}
+
+	/**
+	 * Go to next slide
+	 */
+	DragSlideshow.prototype.previous = function() {
+		this.dd.setStep( this.current );
+	}
+
+	/**
 	 * toggle between fullscreen and minimized slideshow
 	 */
 	DragSlideshow.prototype.toggle = function() {

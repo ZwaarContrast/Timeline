@@ -18,6 +18,10 @@
 	<body>
 		<div class="container">
 
+			<nav id="timeline-arrow-navigation" class="timeline-arrow-navigation">
+				<a href="#" class="timeline-arrow-navigation-arrow timeline-arrow-navigation-arrow-next">&#10095;</a>
+				<a href="#" class="timeline-arrow-navigation-arrow timeline-arrow-navigation-arrow-previous">&#10094;</a>
+			</nav>
 			<nav id="timeline-navigation" class="timeline-navigation">
 				<button class="slider-switch"></button>
 				<button class="content-switch">Ontdek dit tijdvak</button>
@@ -143,8 +147,11 @@
 		<script>
 			(function() {
 
-				var timeline_nav = document.getElementById( 'timeline-navigation' )
+				var timeline_nav = document.getElementById( 'timeline-navigation' ),
+					timeline_arrow_nav = document.getElementById( 'timeline-arrow-navigation' ),
 					switchBtnn = timeline_nav.querySelector( 'button.slider-switch' ),
+					nextBtn = timeline_arrow_nav.querySelector( '.timeline-arrow-navigation-arrow-next' ),
+					prevBtn = timeline_arrow_nav.querySelector( '.timeline-arrow-navigation-arrow-previous' ),
 					toggleBtnn = function() {
 						if( slideshow.isFullscreen ) {
 							classie.add( switchBtnn, 'view-maxi' );
@@ -175,9 +182,21 @@
 						slideshow.toggle();
 						toggleBtnn();
 					},
+					nextSlideshow = function(e){
+						e.preventDefault();
+						slideshow.next();
+						return false;
+					},
+					prevSlideshow = function(e){
+						e.preventDefault();
+						slideshow.previous();
+						return false;
+					}
 
 				// toggle between fullscreen and small slideshow
 				switchBtnn.addEventListener( 'click', toggleSlideshow );
+				nextBtn.addEventListener( 'click', nextSlideshow );
+				prevBtn.addEventListener( 'click', prevSlideshow );
 
 			}());
 		</script>
