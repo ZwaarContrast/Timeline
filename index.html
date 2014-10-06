@@ -12,12 +12,17 @@
 		<link href="css/screen.css?v=2" media="screen, projection" rel="stylesheet" type="text/css" />
 		
 		<!-- 	Fonts -->
-		<link href='http://fonts.googleapis.com/css?family=Muli:300,400,300italic,400italic|Droid+Serif:400,700,400italic,700italic|Dawning+of+a+New+Day' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700|Muli:300,400,300italic,400italic|Droid+Serif:400,700,400italic,700italic|Dawning+of+a+New+Day' rel='stylesheet' type='text/css'>
 
 		<!-- 	Scripts -->
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js"></script>
+		<script src="js/beziereasing.js"/></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"/></script>
+		<script src="js/jquery.ui.min.js"></script>
+		<script src="js/jquery.clipthru.min.js"></script>
 		<script src="js/jquery.touchswipe.min.js"></script>
 		<script src="js/timeline.js"></script>
+		<script src="js/timelineline.js"></script>
 		<script src="js/default.js"></script>
 	
 	</head>
@@ -27,46 +32,46 @@
 		<div id="toggle">v</div>
 		<div id="disable">t</div>
 	
-		<!-- 	Start timeline -->
+		<!-- 	Start timeline slider-->
 		<div id="timeline" class="timeline">
 			<section class="timeline-dragger">
 				<div class="timeline-handle">
-					<div class="timeline-slide" data-content="content-1">
+					<div class="timeline-slide">
 						<div class="timeline-slide-wrapper">
 							<img src="img/header-01.jpg" alt="img1" class="timeline-slide-image"/>
 						</div>
 					</div>
-					<div class="timeline-slide" data-content="content-2">
+					<div class="timeline-slide">
 						<div class="timeline-slide-wrapper">
 							<img src="img/header-02.jpg" alt="img2" class="timeline-slide-image"/>
 						</div>
 					</div>
-					<div class="timeline-slide" data-content="content-3">
+					<div class="timeline-slide">
 						<div class="timeline-slide-wrapper">
 							<img src="img/header-03.jpg" alt="img3" class="timeline-slide-image"/>
 						</div>
 					</div>
-					<div class="timeline-slide" data-content="content-4">
+					<div class="timeline-slide">
 						<div class="timeline-slide-wrapper">
 							<img src="img/header-04.jpg" alt="img4" class="timeline-slide-image"/>
 						</div>
 					</div>
-					<div class="timeline-slide" data-content="content-1">
+					<div class="timeline-slide">
 						<div class="timeline-slide-wrapper">
 							<img src="img/header-01.jpg" alt="img1" class="timeline-slide-image"/>
 						</div>
 					</div>
-					<div class="timeline-slide" data-content="content-2">
+					<div class="timeline-slide">
 						<div class="timeline-slide-wrapper">
 							<img src="img/header-02.jpg" alt="img2" class="timeline-slide-image"/>
 						</div>
 					</div>
-					<div class="timeline-slide" data-content="content-3">
+					<div class="timeline-slide">
 						<div class="timeline-slide-wrapper">
 							<img src="img/header-03.jpg" alt="img3" class="timeline-slide-image"/>
 						</div>
 					</div>
-					<div class="timeline-slide" data-content="content-4">
+					<div class="timeline-slide">
 						<div class="timeline-slide-wrapper">
 							<img src="img/header-04.jpg" alt="img4" class="timeline-slide-image"/>
 						</div>
@@ -76,7 +81,72 @@
 		</div>
 		<!-- 	End timeline -->
 
-		<!-- 	Start content -->
-
+		<!-- 	Start timeline line -->
+		<div id="timelineline" class="timelineline">
+			<div class="timelineline-handle">
+				<div class="timelineline-slide">
+					<div class="timelineline-slide-wrapper">
+						<h2>Late middeleeuwen</h2>
+						<h3>1000&ndash;1500</h3>
+					</div>
+				</div>
+				<div class="timelineline-slide">
+					<div class="timelineline-slide-wrapper">
+						<h2>Niet de Late middeleeuwen</h2>
+						<h3>1940&ndash;1945</h3>
+					</div>
+				</div>
+				<div class="timelineline-slide">
+					<div class="timelineline-slide-wrapper">
+						<h2>Ook niet de middeleeuwen</h2>
+						<h3>1000&ndash;1500</h3>
+					</div>
+				</div>
+				<div class="timelineline-slide">
+					<div class="timelineline-slide-wrapper">
+						<h2>vooreeuwen</h2>
+						<h3>2000&ndash;2013</h3>
+					</div>
+				</div>
+				<div class="timelineline-slide">
+					<div class="timelineline-slide-wrapper">
+						<h2>Zwaar Contrast</h2>
+						<h3>200&ndash;800</h3>
+					</div>
+				</div>
+				<div class="timelineline-slide">
+					<div class="timelineline-slide-wrapper">
+						<h2>Sowieso niet de middeleeuwen</h2>
+						<h3>2000&ndash;2013</h3>
+					</div>
+				</div>
+				<div class="timelineline-slide">
+					<div class="timelineline-slide-wrapper">
+						<h2>Iets na de middeleeuwen</h2>
+						<h3>1940&ndash;1945</h3>
+					</div>
+				</div>
+				<div class="timelineline-slide">
+					<div class="timelineline-slide-wrapper">
+						<h2>Misschien de Late middeleeuwen</h2>
+						<h3>2000&ndash;2013</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 	Stop timeline content -->
+		
+		<!-- 	Start period content -->
+		<div class="period" data-jq-clipthru="testclass-0"> 
+			<p class="period-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui mollitia, porro cumque consequuntur accusamus aliquid nam eligendi deleniti laudantium molestiae, consectetur maxime fugiat labore recusandae, iusto dolore hic quos velit amet maiores quo illo. Tenetur quidem culpa labore ipsum quam!</p>
+			<p class="period-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet magnam eum minus, quo doloremque omnis, nulla nostrum quas provident id, reprehenderit ipsa accusamus sunt nesciunt. Provident incidunt consequuntur, maiores tempora totam blanditiis qui autem, similique perferendis, eos voluptate. Voluptates atque ullam vel ut!</p>
+			<p class="period-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur dolor praesentium accusantium ipsam consequatur assumenda impedit alias officiis, voluptas ex, aliquam hic magnam aut, eum neque sit aspernatur necessitatibus magni enim in.</p>
+			<p class="period-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus dolorum nulla, est. Reiciendis molestias delectus quaerat beatae, blanditiis repudiandae omnis.</p>
+			<p class="period-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui mollitia, porro cumque consequuntur accusamus aliquid nam eligendi deleniti laudantium molestiae, consectetur maxime fugiat labore recusandae, iusto dolore hic quos velit amet maiores quo illo. Tenetur quidem culpa labore ipsum quam!</p>
+			<p class="period-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet magnam eum minus, quo doloremque omnis, nulla nostrum quas provident id, reprehenderit ipsa accusamus sunt nesciunt. Provident incidunt consequuntur, maiores tempora totam blanditiis qui autem, similique perferendis, eos voluptate. Voluptates atque ullam vel ut!</p>
+			<p class="period-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur dolor praesentium accusantium ipsam consequatur assumenda impedit alias officiis, voluptas ex, aliquam hic magnam aut, eum neque sit aspernatur necessitatibus magni enim in.</p>
+			<p class="period-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus dolorum nulla, est. Reiciendis molestias delectus quaerat beatae, blanditiis repudiandae omnis.</p>
+		</div>
+		<!-- 	Stop period content -->
 	</body>
 </html>

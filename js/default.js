@@ -1,5 +1,10 @@
 $(window).load(function(){
-	$('#timeline').Timeline();
+	$('#timeline').Timeline({propagateEventsElements:$('#timelineline')});
+	$('#timelineline').TimelineLine();
+
+	//$('#timeline-content').clipthru({ autoUpdate: true, autoUpdateInterval: true });
+
+
 	// keyboard navigation events
 	document.addEventListener( 'keydown', function( ev ) {
 		var keyCode = ev.keyCode || ev.which;

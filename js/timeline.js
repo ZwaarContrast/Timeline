@@ -24,6 +24,7 @@
 (function($, window, document, undefined) {
 	"use strict";
 
+	var docElem = window.document.documentElement;
 	/*
 	* 	In the constructor we wrap the element on which the plugin is called on in a jQuery object 
 	*	and expose the passed on options for usage in the init function
@@ -59,6 +60,7 @@
 		*/
 		defaults:{
 			resizeDebounce:300,
+			propagateEventsElements:'',
 			//Options for zooming out the timeline
 			perspective : '1200',
 			slideshowRatio : 0.3,
@@ -88,6 +90,7 @@
 
 			//Variables, plugin wide variables
 			this.slideshowRatio = this.config.slideshowRatio;
+			this.windowWidth = this.getViewport('x');
 
 			//Call functions for initialisation
 			this.getElements();
@@ -126,7 +129,7 @@
 		 * 	Function to get data like prefixed styles ans slide amounts
 		 */
 		getData: function(){
-			//Example usage
+			this.propagateEvents = this.config.propagateEventsElements.length>0;
 			this.slidesCount = this.slides.length;
 			this.transformStyle = this.getPrefixedStyle('transform');
 			this.transformStyleStyle = this.getPrefixedStyle('transform-style');
@@ -169,6 +172,7 @@
 				}
 				_self.reflow();
 				_self.setStep(_self.current,true);
+				_self.windowWidth = _self.getViewport('x');
 				TO = setTimeout(function(){
 					//Do stuff here
 					_self.reflow();
@@ -195,6 +199,7 @@
 					_self.setStep( _self.current + 1 );
 					break;
 					case _self.keycodes['down']:
+					ev.preventDefault();
 					_self.toggleView();
 					break;
 
@@ -285,7 +290,7 @@
 			var _self = this;
 
 			//Bind on the disableTimeline event disable interactions
-			$(this.element).on('disableTimeline',function(){
+			$(this.element).on('onSetStepStart',function(){
 				_self.isDisabled = true;
 			});
 			//Bind on the enableTimeline event enable interactions
@@ -338,6 +343,9 @@
 			if( this.isAnimating || this.isDisabled ) {return false;}
 			this.isAnimating = true;
 
+			//Fire event
+			this.dispatchEvent('onToggleViewStart',this.isFullscreen);
+
 			//Add preserve-3d to the slides (seems to fix a rendering problem in firefox)
 			this.preserve3dSlides( true );
 
@@ -348,10 +356,11 @@
 			//Calculate perspective
 			var p = this.config.perspective,
 			r = this.config.slideshowRatio,
-			zAxisVal = this.isFullscreen ? p - ( p / r ) : p - p * r;
+			zAxisVal = this.isFullscreen ? p - ( p / r ) : 0;
 
 			//Set transform
-			this.dragger.style[_self.transformStyle] = 'translate3d( -50%, -50%, ' + zAxisVal + 'px )';
+
+			this.dragger.style[_self.transformStyle] =_self.isFullscreen ?  'translate3d( -50%, -100%, ' + zAxisVal + 'px )': 'translate3d( -50%, -50%, ' + zAxisVal + 'px )';
 
 			//Declare transition Callback
 			var onEndTransitionFn = function( ev ) {
@@ -371,37 +380,43 @@
 				_self.dragger.classList.add(_self.isFullscreen ? _self.config.draggerClassMin : _self.config.draggerClassMax );
 
 				//Set styling
-				this.style[_self.transformStyle] = 'translate3d( -50%, -50%, 0px )';
-				this.style.width = _self.isFullscreen ? _self.config.slideshowRatio * 100 + '%' : '100%';
-				this.style.height = _self.isFullscreen ? _self.config.slideshowRatio * 100 + '%' : '100%';
+				// this.style[_self.transformStyle] = _self.isFullscreen ? 'translate3d( -50%, -100%, 0px )':'translate3d( -50%, -50%, 0px )';
+				// this.style.width = _self.isFullscreen ? _self.config.slideshowRatio * 100 + '%' : '100%';
+				// this.style.height = _self.isFullscreen ? _self.config.slideshowRatio * 100 + '%' : '100%';
 
 				//Calculate values after resizing
+				_self.isFullscreen = !_self.isFullscreen;
 				_self.reflow();
 
 				//Set slide instantly
-				_self.setStep(_self.current,true);
+				_self.setStep(_self.current,true,true);
+
+				_self.dispatchEvent('onToggleViewEnd',this.isFullscreen?true:false);
 
 				//Change status
-				_self.isFullscreen = !_self.isFullscreen;
 				_self.isAnimating = false; 
 			};
 
 			if(_self.transitionStyle) {
 				this.dragger.addEventListener( _self.transitionEndEventName, onEndTransitionFn );
-			}else {
+			}else{
 				onEndTransitionFn();
 			}
 		},
 		/*
 		 * This function is used to set the slider to a specific slide
 		 */
-		setStep:function (index, instant){
+		setStep:function (index, instant,dontevent){
 			var _self = this;
 			//Check animating state
 			if(this.isDisabled || (this.isAnimating && !instant)) return false;
 
 			//Check valid destination index
 			if(index>=0 && index<=this.slidesCount-1){
+				//Fire event
+				if(!dontevent)
+				this.dispatchEvent('onSetStepStart',[index,instant]);
+
 				//Check for instant, remove transition if needed
 				if(instant){
 					this.removeClass(this.handle,this.config.handleClassAnimating);
@@ -415,10 +430,13 @@
 					if(ev && ev.propertyName.indexOf( 'transform' ) === -1 ) return;
 
 					// //Remove event listener
-					this.removeEventListener( _self.transitionEndEventName, onEndStep );
+					if(ev) this.removeEventListener( _self.transitionEndEventName, onEndStep );
 
 					//Change status
 					_self.isAnimating = false; 
+
+					//Fire event
+				 	_self.dispatchEvent('onSetStepFinish',[index,instant]);
 				};
 
 				//Set correct translate 
@@ -426,7 +444,7 @@
 
 				//Set current state
 				this.current = index;
-				if(this.transitionStyle){
+				if(this.transitionStyle&&!instant){
 					this.handle.addEventListener(this.transitionEndEventName, onEndStep );
 				}else {
 					onEndStep();
@@ -460,7 +478,7 @@
 			elStyle = document.documentElement.style;
 
 			//Check unprefixed style
-			//if (elStyle[propName] !== undefined) return propName;
+			if (elStyle[propName] !== undefined) return propName;
 
 			//Check prefixed style
 			propName = propName.charAt(0).toUpperCase() + propName.substr(1);
@@ -477,7 +495,7 @@
 		 * Recalculate values (probably after resize)
 		 */
 		reflow:function(){
-			this.sliderWidth = this.dragger.clientWidth;
+			this.sliderWidth = this.windowWidth;
 		},
 		/*
 		 * Function to set and unset preserve 3d styling
@@ -485,7 +503,7 @@
 		preserve3dSlides:function( add ) {
 			var _self = this;
 			for (var i = 0; i < this.slides.length; i++) {
-				this.slides[i].style[_self.transformStyleStyle] = add ? 'preserve-3d' : '';
+				//this.slides[i].style[_self.transformStyleStyle] = add ? 'preserve-3d' : '';
 			}
 		},
 		/*
@@ -498,7 +516,18 @@
 				delete classArray[index];
 				element.className = classArray.join(' ');
 			}
-		}
+		},
+		/*
+		 * Function to dispatch events to elements passed in the config
+		 */
+		 dispatchEvent:function(ev,params){
+		 	var el;
+		 	if(this.propagateEvents){
+		 		for (var i = 0; i < this.config.propagateEventsElements.length; i++) {
+		 			$(this.config.propagateEventsElements[i]).trigger(ev,params);
+		 		}
+		 	}
+		 }
 	};
 
 	//Extend Jquery with the Statistic function/object
