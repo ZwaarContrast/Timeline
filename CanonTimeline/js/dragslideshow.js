@@ -197,7 +197,13 @@
 	 * gets the content page of the current slide
 	 */
 	DragSlideshow.prototype._getContentPage = function( slide ) {
-		return this.pages.querySelector( 'div.content[data-content = "' + slide.getAttribute( 'data-content' ) + '"]' );
+		var self = this;
+
+		var content = self.pages.querySelector( 'div.content' );
+
+		$(content).html('<h2>HIERO!</h2><p>CONTENT VAN '+$(slide).data('content')+' IN JE BAKKES!</p>');
+
+		return content;
 	}
 
 	/**
