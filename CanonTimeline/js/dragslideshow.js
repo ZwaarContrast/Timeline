@@ -301,8 +301,8 @@
 			r = this.options.slideshowRatio,
 			zAxisVal = this.isFullscreen ? p - ( p / r ) : p - p * r;
 
-		this.imgDragger.style.WebkitTransform = 'translate3d( -50%, -50%, ' + zAxisVal + 'px )';
-		this.imgDragger.style.transform = 'translate3d( -50%, -50%, ' + zAxisVal + 'px )';
+		this.imgDragger.style.WebkitTransform = 'translate3d( -50%, '+(self.isFullscreen ? '-125%' : '-50%')+', ' + zAxisVal + 'px )';
+		this.imgDragger.style.transform = 'translate3d( -50%, '+(self.isFullscreen ? '-125%' : '-50%')+', ' + zAxisVal + 'px )';
 
 		var onEndTransitionFn = function( ev ) {
 			if( support.transitions ) {
@@ -320,8 +320,8 @@
 			classie.add( this, self.isFullscreen ? 'timeline-img-dragger-small' : 'timeline-img-dragger-large' );
 
 			// reset transforms and set width & height
-			self.imgDragger.style.WebkitTransform = 'translate3d( -50%, -50%, 0px )';
-			self.imgDragger.style.transform = 'translate3d( -50%, -50%, 0px )';
+			self.imgDragger.style.WebkitTransform = 'translate3d( -50%, '+(self.isFullscreen ? '-125%' : '-50%')+', 0px )';
+			self.imgDragger.style.transform = 'translate3d( -50%, '+(self.isFullscreen ? '-125%' : '-50%')+', 0px )';
 			this.style.width = self.isFullscreen ? self.options.slideshowRatio * 100 + '%' : '100%';
 			this.style.height = self.isFullscreen ? self.options.slideshowRatio * 100 + '%' : '100%';
 			// reinstatiate the dragger with the "reflow" method
