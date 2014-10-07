@@ -12,8 +12,8 @@
 		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
 		<link rel="stylesheet" type="text/css" href="css/dragdealer.css" />
 		<link rel="stylesheet" type="text/css" href="css/component.css" />
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js"></script>
-  		<script src="js/modernizr.custom.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js" type="text/javascript"></script>
+  		<script src="js/modernizr.custom.js" type="text/javascript"></script>
 	</head>
 	<body>
 		<div class="container">
@@ -78,30 +78,35 @@
 
 				var timeline_nav = document.getElementById( 'timeline-navigation' ),
 					timeline_arrow_nav = document.getElementById( 'timeline-arrow-navigation' ),
+					timeline = document.getElementById( 'timeline' ),
 					switchBtnn = timeline_nav.querySelector( 'button.slider-switch' ),
 					nextBtn = timeline_arrow_nav.querySelector( '.timeline-arrow-navigation-arrow-next' ),
 					prevBtn = timeline_arrow_nav.querySelector( '.timeline-arrow-navigation-arrow-previous' ),
 					toggleBtnn = function() {
 						if( slideshow.isFullscreen ) {
 							classie.add( switchBtnn, 'view-maxi' );
+							classie.add( timeline_arrow_nav, 'view-maxi');
 						}
 						else {
 							classie.remove( switchBtnn, 'view-maxi' );
+							classie.remove( timeline_arrow_nav, 'view-maxi');
 						}
 					},
 					toggleCtrls = function() {
 						if( !slideshow.isContent ) {
 							classie.add( timeline_nav, 'hide' );
 							classie.add( timeline_arrow_nav, 'hide' );
+							classie.add( timeline, 'is-content-open' );
 						}
 					},
 					toggleCompleteCtrls = function() {
 						if( !slideshow.isContent ) {
 							classie.remove( timeline_nav, 'hide' );
 							classie.remove( timeline_arrow_nav, 'hide' );
+							classie.remove( timeline, 'is-content-open' );
 						}
 					},
-					slideshow = new DragSlideshow( document.getElementById( 'timeline' ), { 
+					slideshow = new DragSlideshow( timeline, { 
 						// toggle between fullscreen and minimized slideshow
 						onToggle : toggleBtnn,
 						// toggle the main image and the content view
@@ -129,7 +134,7 @@
 				nextBtn.addEventListener( 'click', nextSlideshow );
 				prevBtn.addEventListener( 'click', prevSlideshow );
 
-			}());
+			})();
 		</script>
 	</body>
 </html>

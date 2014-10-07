@@ -218,6 +218,10 @@ button.slider-switch:hover {
 	-ms-user-select: none;
 	user-select: none;
 	vertical-align: top;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	-webkit-transform-style:preserve-3d;
+	transform-style:preserve-3d;
 }
 
 .no-js .timeline-img-dragger .timeline-slide {
@@ -243,7 +247,8 @@ button.slider-switch:hover {
 	display: block;
 	height: calc(100% + 0.2px);
 	opacity: 1;
-	transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%) translateZ(0);
+	transform: translate(-50%, -50%) translateZ(0);
 	left: 50%;
 	top: 50%;
 	-webkit-transition: -webkit-transform 0.9s cubic-bezier(.7,0,.3,1);
@@ -383,6 +388,60 @@ button.content-switch:hover {
 
 .show-content .current button.content-switch::before {
 	content: '\e096';
+}
+
+.is-content-open .timeline-slide.current h2{
+	-webkit-transition: top 0.9s cubic-bezier(.7,0,.3,1), color 0.3s linear 0s;
+	transition: top 0.9s cubic-bezier(.7,0,.3,1), color 0.3s linear 0s;
+}
+
+.is-content-open.show-content .timeline-slide.current h2{
+	-webkit-transition: top 0.9s cubic-bezier(.7,0,.3,1), color 0.3s linear 0.6s;
+	transition: top 0.9s cubic-bezier(.7,0,.3,1), color 0.3s linear 0.6s;
+}
+
+.is-content-open .timeline-slide.current h2 span{
+	-webkit-transition: color 0.3s linear 0s;
+	transition: color 0.3s linear 0s;
+}
+
+.is-content-open.show-content .timeline-slide.current h2 span{
+	-webkit-transition: color 0.3s linear 0.6s;
+	transition: color 0.3s linear 0.6s;
+}
+
+.timeline-slide.current h2:after{
+	-webkit-transition: width 0.3s cubic-bezier(.7,0,.3,1) 0.6s;
+	transition: width 0.3s cubic-bezier(.7,0,.3,1) 0.6s;
+}
+
+.is-content-open .timeline-slide.current h2:before{
+	-webkit-transition: border 0.3s cubic-bezier(.7,0,.3,1) 0s;
+	transition: border 0.3s cubic-bezier(.7,0,.3,1) 0s;
+}
+
+.is-content-open.show-content .timeline-slide.current h2:before{
+	-webkit-transition: border 0.3s cubic-bezier(.7,0,.3,1) 0.6s;
+	transition: border 0.3s cubic-bezier(.7,0,.3,1) 0.6s;
+}
+
+.show-content .timeline-slide.current h2{
+	top: 105%;
+	color: #333;
+}
+
+.show-content .timeline-slide.current h2 span{
+	color: #333;
+}
+
+.show-content .timeline-slide.current h2:before{
+	border-top: 2px #333 solid;
+}
+
+.show-content .timeline-slide.current h2:after{
+	width:0;
+	-webkit-transition: width 0.3s cubic-bezier(.7,0,.3,1) 0s;
+	transition: width 0.3s cubic-bezier(.7,0,.3,1) 0s;
 }
 
 /* Content */
