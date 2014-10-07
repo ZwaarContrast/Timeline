@@ -1,0 +1,492 @@
+@import 'compass/reset';
+@import "compass/css3/";
+@import "compass/utilities";
+@import "compass/typography";
+
+html, 
+body,
+.js .container,
+.js .dragslider,
+.js .timeline-img-dragger .handle {
+	height: 100%;
+}
+
+html.js, .js body{
+	position: relative;
+	overflow-x: hidden;
+}
+
+.timeline-navigation{
+	position: absolute;
+	z-index: 20;
+	bottom: 0;
+	left: 0;
+	display: block;
+	width: 100%;
+	height: 50px;
+	@include transition(opacity 0.3s);
+	background-color: #333;
+	&.hide{
+		@include transition(opacity 0.3s);
+	}
+}
+
+
+.timeline-arrow-navigation-arrow{
+	position: absolute;
+	top:50%;
+	z-index: 100;
+	text-decoration: none;
+	color: #FFF;
+	line-height: 30px;
+	margin-top:-25px;
+	padding:10px 10px;
+
+	&.timeline-arrow-navigation-arrow-next{
+		right:0;
+	}
+
+	&.timeline-arrow-navigation-arrow-previous{
+		left:0;
+	}
+}
+
+.dragslider{
+	background-color: #333333;
+	h2 {
+		font-family: 'Dawning of a New Day';
+		text-transform: lowercase;
+		font-size: 70px;
+		font-weight:normal;
+		margin: 0 auto;
+		line-height: 1;
+		position: relative;
+		display: inline;
+
+		&:before{
+			content:'';
+			position:absolute;
+			top:50px;
+			right:100%;
+			border-top:2px white solid;
+			width:100px;
+		}
+
+		&:after{
+			content:'';
+			position:absolute;
+			top:50px;
+			border-top:2px white solid;
+			width:2000px;
+		}
+	}
+
+	&.show-content {
+		@include transform(translate3d(0,-75%,0));
+	}
+}
+
+
+.no-js .dragslider h2 {
+	padding: 15px;
+}
+
+.js .dragslider {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	@include transition(transform 0.9s cubic-bezier(0.7,0,0.3,1));
+}
+
+
+/* Switch button */
+button.slider-switch {
+	font-family: 'Montserrat';
+	font-size: 14px;
+	text-transform: lowercase;
+	width: 184px;
+	height: 50px;
+	padding: 0;
+	color: #000;
+	position: relative;
+	border: none;
+	background-color:#ffefbe;
+	float: right;
+	outline: none;
+	overflow: hidden;
+	@include opacity(0.7);
+	@include transition(opacity 0.3s);
+	pointer-events: auto;
+	z-index: 99;
+
+	&:after{
+		content:'Bekijk tijdlijn';
+	}
+	
+	&.view-maxi:after {
+		content:'Sluit tijdlijn';
+	}
+
+	&:hover {
+		opacity: 1;
+	}
+
+}
+
+.no-js button.slider-switch {
+	display: none;
+}
+
+
+
+/* Dragger */
+.timeline-img-dragger {
+	position: relative;
+	z-index: 100;
+
+	.js &{
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 50%;
+		left: 50%;
+
+		@include transform(translate3d(-50%,-50%,0));
+
+		.handle {
+			@include transform-style(preserve-3d);
+			white-space: nowrap;
+			font-size: 0;
+		}
+	}
+
+	.no-js &{
+		height: auto;
+		position: relative;
+		text-align: center;
+		font-size: 0;
+		clear: both;
+		white-space: nowrap;
+		overflow: auto;
+
+		.handle{
+			height: auto;
+			position: relative;
+			text-align: center;
+			font-size: 0;
+			clear: both;
+			white-space: nowrap;
+			overflow: auto;
+			padding: 40px 0 0;
+		}
+	}
+}
+
+.timeline-img-dragger-large{
+	.js &{
+		width: 100%;
+		height: 100%;
+	}
+}
+
+.timeline-img-dragger .timeline-slide {
+	display: inline-block;
+	position: relative;
+	height: 100%;
+	background: #567076;
+	font-size: 16px;
+	white-space: normal;
+	cursor: -webkit-grab; 
+	cursor: -moz-grab;
+	-webkit-touch-callout: none;
+	@include user-select(none);
+	vertical-align: top;
+	@include backface-visibility(hidden);
+	@include transform-style(preserve-3d);
+
+	.no-js &{
+		width: 300px;
+		font-size: 7px;
+		min-height: 200px;
+	}
+
+	&:active {
+		cursor: -webkit-grabbing; 
+		cursor: -moz-grabbing;
+	}
+}
+
+.timeline-img-wrap {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+
+	img {
+		position: absolute;
+		display: block;
+		height: calc(100% + 0.2px);
+		opacity: 1;
+		@include transform(translate3d(-50%,-50%,0));
+		@include transition(transform 0.9s cubic-bezier(.7,0,.3,1));
+		left: 50%;
+		top: 50%;
+
+		.show-content &{
+			@include transform(translate3d(-50%,-25%,0));
+		}
+	}
+}
+
+@media screen and (min-aspect-ratio: 1280/850) {
+    .timeline-img-dragger .timeline-img-wrap  img {
+        width: calc(100% + 0.2px);
+        height: auto;
+    }
+}
+
+@-webkit-keyframes slideUpFade {
+	from {
+		opacity: 0;
+		@include transform(translate3d(0,20px,0));
+	}
+	to {
+		opacity: 1;
+		@include transform(translate3d(0,0,0));
+	}
+}
+
+.timeline-slide h2 {
+
+	.js &{
+		color: #fff;
+		position: absolute;
+		@include transition(opacity 0.3s);
+	}
+
+	.js .timeline-img-dragger-large &{
+		left: 100px;
+		top: 50%;
+		@include transform(translate3d(0,-50%,0));
+	}
+
+	span{
+		font-family: 'Montserrat';
+		font-size: 18px;
+		text-transform: lowercase;
+		line-height: 24px;
+		color: white;
+		position:relative;
+		overflow:visible;
+		text-align:left;
+		margin:0;
+		font-weight:bold;
+		position: absolute;
+		right:0;
+		bottom:-28px;
+	}
+
+	.timeline-img-dragger-small &{
+		font-size: 2.5em;
+		padding-top: 1em;
+		padding-bottom: 30px;
+		top: 100%;
+		width: 100%;
+		text-align: left;
+		color: #FFF;
+		@include animation(slideUpFade 0.4s 0s);
+		overflow: hidden;
+
+		span {
+			right:auto;
+			left:0;
+			bottom: 0;
+			font-size: 0.35em;
+		}
+
+		&:before,&:after{
+		  top:64px;
+		}
+	}
+}
+
+.timeline-img-dragger-small .timeline-slide.current h2 {
+	color: #fff;
+	@include animation-delay(0s);
+	@include transition(color 0.3s, opacity 0.3s);
+}
+
+button.content-switch {
+	width: 160px;
+	overflow: hidden;
+	white-space: nowrap;
+	background: transparent;
+	color: #fff;
+	font-family: 'Montserrat';
+	font-size: 14px;
+	font-weight: bold;
+	position: absolute;
+	cursor: pointer;
+	top: 100%;
+	left: 50%;
+	@include transform(translate3d(-50%,-200%,0));
+	text-transform: lowercase;
+	outline: none;
+	z-index: 1000;
+	@include opacity(0.7);
+	border:none;
+}
+
+.content-switch {
+	.no-js &{
+		display: none;
+	}	
+
+	&:hover {
+		@include opacity(1);
+	}
+}
+
+.show-content .current button.content-switch {
+	border-color: #c5d3d6;
+	color: #c5d3d6;
+	@include transform(translate3d(-50%,100%,0));
+
+	&:before {
+		content: '\e096';
+	}
+}
+
+.is-content-open{
+	.timeline-slide.current{
+		h2{
+			@include transition(top 0.9s cubic-bezier(0.7,0,0.3,1), color 0.3s linear 0s);
+			span{
+				@include transition(color 0.3s linear 0s);
+			}
+
+			&:before{
+				@include transition(border 0.3s cubic-bezier(.7,0,.3,1) 0s);
+			}
+		}
+	}
+
+	&.show-content{
+		.timeline-slide.current{
+			h2{
+				@include transition(top 0.9s cubic-bezier(.7,0,.3,1), color 0.3s linear 0.6s);
+
+				span{
+					@include transition(color 0.3s linear 0.6s);
+				}
+
+				&:before{
+					@include transition(border 0.3s cubic-bezier(.7,0,.3,1) 0.6s);
+				}
+			}
+		}
+	}
+}
+
+.timeline-slide.current h2:after{
+	@include transition(width 0.3s cubic-bezier(.7,0,.3,1) 0.6s);
+}
+
+.show-content .timeline-slide.current h2{
+	top: 105%;
+	color: #333;
+
+	span{
+		color: #333;
+	}
+
+	&:before{
+		border-top: 2px #333 solid;
+	}
+
+	&:after{
+		width:0;
+		@include transition(width 0.3s cubic-bezier(.7,0,.3,1) 0s);
+	}
+}
+
+
+
+
+/* Content */
+.js .pages {
+	position: absolute;
+	top: 100%;
+	height: 0;
+	width: 100%;
+	-webkit-overflow-scrolling: touch;
+	@include transition(height 0s 0.6s);
+
+	.content {
+		position: absolute;
+		top: 150px;
+		left: 0;
+		height: 0;
+		width: 100%;
+		overflow: hidden;
+		@include transition(height 0s 0.6s);
+	}
+}
+
+.js .show-content .pages {
+	@include transition(none);
+	height: auto;
+}
+
+.pages .content.show {
+	height: auto;
+	@include transition(none);
+}
+
+/* Switch */
+.switch-min .timeline-img-dragger-large .timeline-slide > *:not(.timeline-img-wrap),
+.switch-max .timeline-img-dragger-small .timeline-slide > *:not(.timeline-img-wrap)  { /* fade out everything except image */
+	opacity: 0;
+	@include transition(none);
+}
+
+.switch-min .timeline-img-dragger-large,
+.switch-max .timeline-img-dragger-small {
+	@include transition(transform 0.6s cubic-bezier(.7,0,.3,1));
+}
+
+.timeline-img-dragger-small button.content-switch {
+	opacity: 0;
+	pointer-events: none;
+}
+
+/* Helper classes */
+.no-transition {
+	-webkit-transition: none !important;
+	transition: none !important;
+}
+
+.hide {
+	opacity: 0 !important;
+	pointer-events: none !important;
+}
+
+@media screen and (max-width: 63.125em) {
+	.dragslider h2 {
+		font-size: 2.8em;
+	}
+	.pages .content {
+		font-size: 100%;
+	}
+	.pages .content h2 {
+		font-size: 3em;
+	}
+}
+
+@media screen and (max-width: 650px) {
+	button.slider-switch {
+		display: none;
+	}
+}
