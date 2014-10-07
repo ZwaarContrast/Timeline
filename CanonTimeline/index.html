@@ -10,7 +10,6 @@
 		<link rel="shortcut icon" href="../favicon.ico">
 		<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700|Muli:300,400,300italic,400italic|Droid+Serif:400,700,400italic,700italic|Dawning+of+a+New+Day' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" type="text/css" href="css/screen.css" />
-		<link rel="stylesheet" type="text/css" href="css/dragdealer.css" />
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js" type="text/javascript"></script>
   		<script src="js/modernizr.custom.js" type="text/javascript"></script>
 	</head>
@@ -21,13 +20,9 @@
 				<a href="#" class="timeline-arrow-navigation-arrow timeline-arrow-navigation-arrow-next">&#10095;</a>
 				<a href="#" class="timeline-arrow-navigation-arrow timeline-arrow-navigation-arrow-previous">&#10094;</a>
 			</nav>
-			<nav id="timeline-navigation" class="timeline-navigation">
-				<button class="slider-switch"></button>
-				<button class="content-switch">Ontdek dit tijdvak</button>
-			</nav>
 			<div id="timeline" class="dragslider">
 				<section class="timeline-img-dragger timeline-img-dragger-large dragdealer">
-					<div class="handle">
+					<div class="timeline-handle">
 						<div class="timeline-slide" data-content="content-1">
 							<div class="timeline-img-wrap"><img class="timeline-img" src="img/header-01.jpg" alt="img1"/></div>
 							<h2>Middeleeuwen<span>1200 - 1500</span></h2>
@@ -64,6 +59,10 @@
 				</section><!-- /img-dragger-->
 				<!-- Content section -->
 				<section class="pages">
+					<nav id="timeline-navigation" class="timeline-navigation">
+						<button class="timeline-zoom-switch"></button>
+						<button class="timeline-content-switch"></button>
+					</nav>
 					<div class="content">
 					</div>
 				</section>
@@ -78,31 +77,33 @@
 				var timeline_nav = document.getElementById( 'timeline-navigation' ),
 					timeline_arrow_nav = document.getElementById( 'timeline-arrow-navigation' ),
 					timeline = document.getElementById( 'timeline' ),
-					switchBtnn = timeline_nav.querySelector( 'button.slider-switch' ),
+					switchBtnn = timeline_nav.querySelector( 'button.timeline-zoom-switch' ),
 					nextBtn = timeline_arrow_nav.querySelector( '.timeline-arrow-navigation-arrow-next' ),
 					prevBtn = timeline_arrow_nav.querySelector( '.timeline-arrow-navigation-arrow-previous' ),
 					toggleBtnn = function() {
 						if( slideshow.isFullscreen ) {
 							classie.add( switchBtnn, 'view-maxi' );
 							classie.add( timeline_arrow_nav, 'view-maxi');
+							classie.add( timeline_nav, 'view-maxi');
 						}
 						else {
 							classie.remove( switchBtnn, 'view-maxi' );
 							classie.remove( timeline_arrow_nav, 'view-maxi');
+							classie.remove( timeline_nav, 'view-maxi');
 						}
 					},
 					toggleCtrls = function() {
 						if( !slideshow.isContent ) {
-							classie.add( timeline_nav, 'hide' );
 							classie.add( timeline_arrow_nav, 'hide' );
 							classie.add( timeline, 'is-content-open' );
+							classie.add( timeline_nav, 'is-content-open' );
 						}
 					},
 					toggleCompleteCtrls = function() {
 						if( !slideshow.isContent ) {
-							classie.remove( timeline_nav, 'hide' );
 							classie.remove( timeline_arrow_nav, 'hide' );
 							classie.remove( timeline, 'is-content-open' );
+							classie.remove( timeline_nav, 'is-content-open' );
 						}
 					},
 					slideshow = new DragSlideshow( timeline, { 

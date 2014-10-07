@@ -91,7 +91,7 @@
 		this.imgDragger = this.el.querySelector( 'section.dragdealer' );
 		
 		// the moving element inside the images wrapper
-		this.handle = this.imgDragger.querySelector( 'div.handle' );
+		this.handle = this.imgDragger.querySelector( 'div.timeline-handle' );
 		
 		// the slides
 		this.slides = [].slice.call( this.handle.children );
@@ -150,7 +150,7 @@
 		} );
 
 
-		document.getElementById( 'timeline-navigation' ).querySelector( 'button.content-switch' ).addEventListener( 'click', function() { 
+		document.getElementById( 'timeline-navigation' ).querySelector( 'button.timeline-content-switch' ).addEventListener( 'click', function() { 
 			//self._toggleContent( slide ); 
 
 			var currentSlide = $(self.slides).filter('.current');
@@ -168,6 +168,7 @@
 					case 38:
 						// only if current scroll is 0:
 						if( self._getContentPage( currentSlide ).scrollTop === 0 ) {
+							ev.preventDefault();
 							self._toggleContent( currentSlide );
 						}
 						break;
@@ -179,13 +180,16 @@
 					case 40:
 						// if not fullscreen don't reveal the content. If you want to navigate directly to the content then remove this check.
 						if( !self.isFullscreen ) return;
+						ev.preventDefault();
 						self._toggleContent( currentSlide );
 						break;
 					// right and left keys
 					case 37:
+						ev.preventDefault();
 						self.dd.setStep( self.current );
 						break;
 					case 39:
+						ev.preventDefault();
 						self.dd.setStep( self.current + 2 );
 						break;
 				}
@@ -264,6 +268,7 @@
 	DragSlideshow.prototype._initDragDealer = function() {
 		var self = this;
 		this.dd = new Dragdealer( this.imgDragger, {
+			handleClass:'timeline-handle',
 			steps: this.slidesCount,
 			speed: 0.2,
 			loose: true,

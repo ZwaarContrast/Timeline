@@ -3,7 +3,7 @@
 @import 'compass/utilities';
 @import 'compass/typography';
 
-html, body, .js .container, .js .dragslider, .js .timeline-img-dragger .handle{
+html, body, .js .container, .js .dragslider, .js .timeline-img-dragger .timeline-handle{
 	height: 100%;
 }
 
@@ -15,7 +15,7 @@ html.js, .js body{
 .dragdealer{
 	position: relative;
 	height: 30px;
-	.handle{
+	.timeline-handle{
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -36,17 +36,20 @@ html.js, .js body{
 
 .timeline-navigation{
 	position: absolute;
-	z-index: 20;
-	bottom: 0;
+	z-index: 999;
+	top: 0;
 	left: 0;
 	display: block;
 	width: 100%;
 	height: 50px;
 	background-color: #333;
+	@include transform(translate3d(0,-100%,0));
+	// @include transition(opacity 0.3s);
+	// &.hide{
+	// 	@include transition(opacity 0.3s);
+	// }
 
-	@include transition(opacity 0.3s);
-	&.hide{
-		@include transition(opacity 0.3s);
+	&.is-content-open{
 	}
 }
 
@@ -79,6 +82,7 @@ html.js, .js body{
 		font-weight: normal;
 		line-height: 1;
 		text-transform: lowercase;
+		@include text-shadow(0px 2px 2px 0px rgba(50, 50, 50, 0.20));
 		&:before{
 			position: absolute;
 			top: 50px;
@@ -86,6 +90,7 @@ html.js, .js body{
 			width: 100px;
 			border-top: 2px white solid;
 			content: '';
+			@include box-shadow(0px 2px 2px 0px rgba(50, 50, 50, 0.20));
 		}
 		&:after{
 			position: absolute;
@@ -93,10 +98,17 @@ html.js, .js body{
 			width: 2000px;
 			border-top: 2px white solid;
 			content: '';
+			@include box-shadow(0px 2px 2px 0px rgba(50, 50, 50, 0.20));
 		}
 	}
 	&.show-content{
 		@include transform(translate3d(0,-75%,0));
+		h2{
+			@include text-shadow(none);
+			&:before{
+				@include box-shadow(none);
+			}
+		}
 	}
 }
 
@@ -117,7 +129,7 @@ html.js, .js body{
 
 
 /* Switch button */
-button.slider-switch{
+button.timeline-zoom-switch{
 	position: relative;
 	z-index: 99;
 	float: right;
@@ -135,7 +147,7 @@ button.slider-switch{
 	background-color: #ffefbe;
 
 	@include opacity(0.7);
-	@include transition(opacity 0.3s);
+	@include transition(opacity 0.3s, visibility 0s);
 	&:after{
 		content: 'Bekijk tijdlijn';
 	}
@@ -145,9 +157,16 @@ button.slider-switch{
 	&:hover{
 		opacity: 1;
 	}
+
+	.is-content-open &{
+		//Hide the content switch
+		@include transition(opacity 0.3s linear 0s, visibility 0s 0.3s);
+		@include opacity(0);
+		visibility: hidden;
+	}
 }
 
-.no-js button.slider-switch{
+.no-js button.timeline-zoom-switch{
 	display: none;
 }
 
@@ -165,7 +184,7 @@ button.slider-switch{
 		height: 100%;
 
 		@include transform(translate3d(-50%,-50%,0));
-		.handle{
+		.timeline-handle{
 			font-size: 0;
 			white-space: nowrap;
 
@@ -180,7 +199,7 @@ button.slider-switch{
 		font-size: 0;
 		text-align: center;
 		white-space: nowrap;
-		.handle{
+		.timeline-handle{
 			position: relative;
 			clear: both;
 			overflow: auto;
@@ -325,10 +344,10 @@ button.slider-switch{
 	@include transition(color 0.3s, opacity 0.3s);
 }
 
-button.content-switch{
+button.timeline-content-switch{
 	position: absolute;
 	z-index: 1000;
-	top: 100%;
+	top: 0;
 	left: 50%;
 	overflow: hidden;
 	width: 160px;
@@ -342,27 +361,80 @@ button.content-switch{
 	color: #fff;
 	outline: none;
 	background: transparent;
+	visibility: visible;
+	height:50px;
 
-	@include transform(translate3d(-50%,-200%,0));
+	@include transform(translate3d(-50%,0,0));
+	@include transition(opacity 0.3s linear 0s, visibility 0s 0s);
 	@include opacity(0.7);
-}
-
-.content-switch{
+	
 	.no-js &{
 		display: none;
 	}
+
 	&:hover{
 		@include opacity(1);
 	}
+
+	&:before{
+		content:'Ontdek dit tijdvak';
+		background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMjA1IDU5Ni42IDQ2MS40IDk2LjciIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMjA1IDU5Ni42IDQ2MS40IDk2LjciIHhtbDpzcGFjZT0icHJlc2VydmUiPjx0aXRsZT5pY29uIDMxIHN1bnNldDwvdGl0bGU+PGRlc2M+Q3JlYXRlZCB3aXRoIFNrZXRjaC48L2Rlc2M+PGc+PHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTY1NC40LDU5Ni42SDUwNy4xbC0yOSwyNC4xbC00My40LDM2LjJMMzk2LDYyMC43TDM2Nyw1OTYuNkgyMTkuN2MtNC44LDAtMTIuMSw0LjgtMTIuMSwxMi4xczcuMiwxMi4xLDEyLjEsMTIuMWgxMzIuOGw4NC41LDcyLjVsODQuNS03Mi41aDEzMi44YzcuMiwwLDEyLjEtNC44LDEyLjEtMTIuMUM2NjYuNCw2MDEuNCw2NjEuNiw1OTYuNiw2NTQuNCw1OTYuNnoiLz48L2c+PC9zdmc+);
+		background-repeat: no-repeat;
+		background-origin: 50% 50%;
+		background-position: center bottom 6px;
+		background-size: 48px;
+		height: 38px;
+		display: block;
+		position: absolute;
+		width: 100%;
+		height: 44px;
+		top: 0;
+		left: 0;
+		margin-top: 6px;
+		@include opacity(1);
+		@include transition(opacity 0.2s 0.7s);
+	}
+
+	&:after{
+		content:'Terug naar tijdlijn';
+		background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMjA1IDU5Ni42IDQ2MS40IDk2LjciIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMjA1IDU5Ni42IDQ2MS40IDk2LjciIHhtbDpzcGFjZT0icHJlc2VydmUiPjx0aXRsZT5pY29uIDMxIHN1bnNldDwvdGl0bGU+PGRlc2M+Q3JlYXRlZCB3aXRoIFNrZXRjaC48L2Rlc2M+PGc+PHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTY1NC40LDY5My4zSDUwNy4xbC0yOS0yNC4xTDQzNC42LDYzM0wzOTYsNjY5LjJMMzY3LDY5My4zSDIxOS43Yy00LjgsMC0xMi4xLTQuOC0xMi4xLTEyLjFzNy4yLTEyLjEsMTIuMS0xMi4xaDEzMi44bDg0LjUtNzIuNWw4NC41LDcyLjVoMTMyLjhjNy4yLDAsMTIuMSw0LjgsMTIuMSwxMi4xUzY2MS42LDY5My4zLDY1NC40LDY5My4zeiIvPjwvZz48L3N2Zz4=);
+		background-repeat: no-repeat;
+		background-origin: 50% 50%;
+		background-position: center top 6px;
+		background-size: 48px;
+		height: 38px;
+		display: block;
+		position: absolute;
+		width: 100%;
+		height: 44px;
+		top: 0;
+		left: 0;
+		padding-top: 24px;
+		display: block;
+		@include opacity(0);
+		@include transition(opacity 0.2s 0s);
+	}
+
+	.view-maxi &{
+		//Hide the content switch
+		@include transition(opacity 0.3s linear 0s, visibility 0s 0.3s);
+		@include opacity(0);
+		visibility: hidden;
+	}
 }
 
-.show-content .current button.content-switch{
+.show-content button.timeline-content-switch{
 	border-color: #c5d3d6;
 	color: #c5d3d6;
-
-	@include transform(translate3d(-50%,100%,0));
+	
 	&:before{
-		content: '\e096';
+		@include opacity(0);
+		@include transition(opacity 0.2s 0s);
+	}
+
+	&:after{
+		@include opacity(1);
+		@include transition(opacity 0.2s 0.7s);
 	}
 }
 
@@ -461,7 +533,7 @@ button.content-switch{
 	@include transition(transform 0.6s cubic-bezier(0.7,0,0.3,1));
 }
 
-.timeline-img-dragger-small button.content-switch{
+.timeline-img-dragger-small button.timeline-content-switch{
 	pointer-events: none;
 	opacity: 0;
 }
@@ -490,7 +562,7 @@ button.content-switch{
 }
 
 @media screen and (max-width: 650px){
-	button.slider-switch{
+	button.timeline-zoom-switch{
 		display: none;
 	}
 }
