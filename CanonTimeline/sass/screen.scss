@@ -16,6 +16,31 @@ html.js, .js body{
 	overflow-x: hidden;
 }
 
+.dragdealer {
+	position: relative;
+	height: 30px;
+
+	.handle {
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+
+	.disabled {
+		background: #898989;
+	}
+
+	.red-bar {
+		width: 100px;
+		height: 30px;
+		background: #CC0000;
+		color: #FFF;
+		font-size: 14px;
+		line-height: 30px;
+		text-align: center;
+	}
+}
+
 .timeline-navigation{
 	position: absolute;
 	z-index: 20;

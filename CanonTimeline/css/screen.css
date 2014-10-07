@@ -79,6 +79,32 @@ html.js, .js body {
 }
 
 /* line 19, ../sass/screen.scss */
+.dragdealer {
+  position: relative;
+  height: 30px;
+}
+/* line 23, ../sass/screen.scss */
+.dragdealer .handle {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+/* line 29, ../sass/screen.scss */
+.dragdealer .disabled {
+  background: #898989;
+}
+/* line 33, ../sass/screen.scss */
+.dragdealer .red-bar {
+  width: 100px;
+  height: 30px;
+  background: #CC0000;
+  color: #FFF;
+  font-size: 14px;
+  line-height: 30px;
+  text-align: center;
+}
+
+/* line 44, ../sass/screen.scss */
 .timeline-navigation {
   position: absolute;
   z-index: 20;
@@ -93,7 +119,7 @@ html.js, .js body {
   transition: opacity 0.3s;
   background-color: #333;
 }
-/* line 29, ../sass/screen.scss */
+/* line 54, ../sass/screen.scss */
 .timeline-navigation.hide {
   -moz-transition: opacity 0.3s;
   -o-transition: opacity 0.3s;
@@ -101,7 +127,7 @@ html.js, .js body {
   transition: opacity 0.3s;
 }
 
-/* line 35, ../sass/screen.scss */
+/* line 60, ../sass/screen.scss */
 .timeline-arrow-navigation-arrow {
   position: absolute;
   top: 50%;
@@ -112,20 +138,20 @@ html.js, .js body {
   margin-top: -25px;
   padding: 10px 10px;
 }
-/* line 45, ../sass/screen.scss */
+/* line 70, ../sass/screen.scss */
 .timeline-arrow-navigation-arrow.timeline-arrow-navigation-arrow-next {
   right: 0;
 }
-/* line 49, ../sass/screen.scss */
+/* line 74, ../sass/screen.scss */
 .timeline-arrow-navigation-arrow.timeline-arrow-navigation-arrow-previous {
   left: 0;
 }
 
-/* line 54, ../sass/screen.scss */
+/* line 79, ../sass/screen.scss */
 .dragslider {
   background-color: #333333;
 }
-/* line 56, ../sass/screen.scss */
+/* line 81, ../sass/screen.scss */
 .dragslider h2 {
   font-family: 'Dawning of a New Day';
   text-transform: lowercase;
@@ -136,7 +162,7 @@ html.js, .js body {
   position: relative;
   display: inline;
 }
-/* line 66, ../sass/screen.scss */
+/* line 91, ../sass/screen.scss */
 .dragslider h2:before {
   content: '';
   position: absolute;
@@ -145,7 +171,7 @@ html.js, .js body {
   border-top: 2px white solid;
   width: 100px;
 }
-/* line 75, ../sass/screen.scss */
+/* line 100, ../sass/screen.scss */
 .dragslider h2:after {
   content: '';
   position: absolute;
@@ -153,7 +179,7 @@ html.js, .js body {
   border-top: 2px white solid;
   width: 2000px;
 }
-/* line 84, ../sass/screen.scss */
+/* line 109, ../sass/screen.scss */
 .dragslider.show-content {
   -moz-transform: translate3d(0, -75%, 0);
   -ms-transform: translate3d(0, -75%, 0);
@@ -161,12 +187,12 @@ html.js, .js body {
   transform: translate3d(0, -75%, 0);
 }
 
-/* line 90, ../sass/screen.scss */
+/* line 115, ../sass/screen.scss */
 .no-js .dragslider h2 {
   padding: 15px;
 }
 
-/* line 94, ../sass/screen.scss */
+/* line 119, ../sass/screen.scss */
 .js .dragslider {
   position: absolute;
   top: 0;
@@ -180,7 +206,7 @@ html.js, .js body {
 }
 
 /* Switch button */
-/* line 105, ../sass/screen.scss */
+/* line 130, ../sass/screen.scss */
 button.slider-switch {
   font-family: 'Montserrat';
   font-size: 14px;
@@ -204,31 +230,31 @@ button.slider-switch {
   pointer-events: auto;
   z-index: 99;
 }
-/* line 124, ../sass/screen.scss */
+/* line 149, ../sass/screen.scss */
 button.slider-switch:after {
   content: 'Bekijk tijdlijn';
 }
-/* line 128, ../sass/screen.scss */
+/* line 153, ../sass/screen.scss */
 button.slider-switch.view-maxi:after {
   content: 'Sluit tijdlijn';
 }
-/* line 132, ../sass/screen.scss */
+/* line 157, ../sass/screen.scss */
 button.slider-switch:hover {
   opacity: 1;
 }
 
-/* line 138, ../sass/screen.scss */
+/* line 163, ../sass/screen.scss */
 .no-js button.slider-switch {
   display: none;
 }
 
 /* Dragger */
-/* line 145, ../sass/screen.scss */
+/* line 170, ../sass/screen.scss */
 .timeline-img-dragger {
   position: relative;
   z-index: 100;
 }
-/* line 149, ../sass/screen.scss */
+/* line 174, ../sass/screen.scss */
 .js .timeline-img-dragger {
   position: absolute;
   width: 100%;
@@ -240,7 +266,7 @@ button.slider-switch:hover {
   -webkit-transform: translate3d(-50%, -50%, 0);
   transform: translate3d(-50%, -50%, 0);
 }
-/* line 158, ../sass/screen.scss */
+/* line 183, ../sass/screen.scss */
 .js .timeline-img-dragger .handle {
   -moz-transform-style: preserve-3d;
   -webkit-transform-style: preserve-3d;
@@ -248,7 +274,7 @@ button.slider-switch:hover {
   white-space: nowrap;
   font-size: 0;
 }
-/* line 165, ../sass/screen.scss */
+/* line 190, ../sass/screen.scss */
 .no-js .timeline-img-dragger {
   height: auto;
   position: relative;
@@ -258,7 +284,7 @@ button.slider-switch:hover {
   white-space: nowrap;
   overflow: auto;
 }
-/* line 174, ../sass/screen.scss */
+/* line 199, ../sass/screen.scss */
 .no-js .timeline-img-dragger .handle {
   height: auto;
   position: relative;
@@ -270,13 +296,13 @@ button.slider-switch:hover {
   padding: 40px 0 0;
 }
 
-/* line 188, ../sass/screen.scss */
+/* line 213, ../sass/screen.scss */
 .js .timeline-img-dragger-large {
   width: 100%;
   height: 100%;
 }
 
-/* line 194, ../sass/screen.scss */
+/* line 219, ../sass/screen.scss */
 .timeline-img-dragger .timeline-slide {
   display: inline-block;
   position: relative;
@@ -299,26 +325,26 @@ button.slider-switch:hover {
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
 }
-/* line 209, ../sass/screen.scss */
+/* line 234, ../sass/screen.scss */
 .no-js .timeline-img-dragger .timeline-slide {
   width: 300px;
   font-size: 7px;
   min-height: 200px;
 }
-/* line 215, ../sass/screen.scss */
+/* line 240, ../sass/screen.scss */
 .timeline-img-dragger .timeline-slide:active {
   cursor: -webkit-grabbing;
   cursor: -moz-grabbing;
 }
 
-/* line 221, ../sass/screen.scss */
+/* line 246, ../sass/screen.scss */
 .timeline-img-wrap {
   position: absolute;
   width: 100%;
   height: 100%;
   overflow: hidden;
 }
-/* line 227, ../sass/screen.scss */
+/* line 252, ../sass/screen.scss */
 .timeline-img-wrap img {
   position: absolute;
   display: block;
@@ -335,7 +361,7 @@ button.slider-switch:hover {
   left: 50%;
   top: 50%;
 }
-/* line 237, ../sass/screen.scss */
+/* line 262, ../sass/screen.scss */
 .show-content .timeline-img-wrap img {
   -moz-transform: translate3d(-50%, -25%, 0);
   -ms-transform: translate3d(-50%, -25%, 0);
@@ -344,7 +370,7 @@ button.slider-switch:hover {
 }
 
 @media screen and (min-aspect-ratio: 1280 / 850) {
-  /* line 244, ../sass/screen.scss */
+  /* line 269, ../sass/screen.scss */
   .timeline-img-dragger .timeline-img-wrap img {
     width: calc(100% + 0.2px);
     height: auto;
@@ -366,7 +392,7 @@ button.slider-switch:hover {
     transform: translate3d(0, 0, 0);
   }
 }
-/* line 263, ../sass/screen.scss */
+/* line 288, ../sass/screen.scss */
 .js .timeline-slide h2 {
   color: #fff;
   position: absolute;
@@ -375,7 +401,7 @@ button.slider-switch:hover {
   -webkit-transition: opacity 0.3s;
   transition: opacity 0.3s;
 }
-/* line 269, ../sass/screen.scss */
+/* line 294, ../sass/screen.scss */
 .js .timeline-img-dragger-large .timeline-slide h2 {
   left: 100px;
   top: 50%;
@@ -384,7 +410,7 @@ button.slider-switch:hover {
   -webkit-transform: translate3d(0, -50%, 0);
   transform: translate3d(0, -50%, 0);
 }
-/* line 275, ../sass/screen.scss */
+/* line 300, ../sass/screen.scss */
 .timeline-slide h2 span {
   font-family: 'Montserrat';
   font-size: 18px;
@@ -400,7 +426,7 @@ button.slider-switch:hover {
   right: 0;
   bottom: -28px;
 }
-/* line 291, ../sass/screen.scss */
+/* line 316, ../sass/screen.scss */
 .timeline-img-dragger-small .timeline-slide h2 {
   font-size: 2.5em;
   padding-top: 1em;
@@ -414,19 +440,19 @@ button.slider-switch:hover {
   animation: slideUpFade 0.4s 0s;
   overflow: hidden;
 }
-/* line 302, ../sass/screen.scss */
+/* line 327, ../sass/screen.scss */
 .timeline-img-dragger-small .timeline-slide h2 span {
   right: auto;
   left: 0;
   bottom: 0;
   font-size: 0.35em;
 }
-/* line 309, ../sass/screen.scss */
+/* line 334, ../sass/screen.scss */
 .timeline-img-dragger-small .timeline-slide h2:before, .timeline-img-dragger-small .timeline-slide h2:after {
   top: 64px;
 }
 
-/* line 315, ../sass/screen.scss */
+/* line 340, ../sass/screen.scss */
 .timeline-img-dragger-small .timeline-slide.current h2 {
   color: #fff;
   -moz-animation-delay: 0s;
@@ -438,7 +464,7 @@ button.slider-switch:hover {
   transition: color 0.3s, opacity 0.3s;
 }
 
-/* line 321, ../sass/screen.scss */
+/* line 346, ../sass/screen.scss */
 button.content-switch {
   width: 160px;
   overflow: hidden;
@@ -464,17 +490,17 @@ button.content-switch {
   border: none;
 }
 
-/* line 343, ../sass/screen.scss */
+/* line 368, ../sass/screen.scss */
 .no-js .content-switch {
   display: none;
 }
-/* line 347, ../sass/screen.scss */
+/* line 372, ../sass/screen.scss */
 .content-switch:hover {
   filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
   opacity: 1;
 }
 
-/* line 352, ../sass/screen.scss */
+/* line 377, ../sass/screen.scss */
 .show-content .current button.content-switch {
   border-color: #c5d3d6;
   color: #c5d3d6;
@@ -483,12 +509,12 @@ button.content-switch {
   -webkit-transform: translate3d(-50%, 100%, 0);
   transform: translate3d(-50%, 100%, 0);
 }
-/* line 357, ../sass/screen.scss */
+/* line 382, ../sass/screen.scss */
 .show-content .current button.content-switch:before {
   content: '\e096';
 }
 
-/* line 364, ../sass/screen.scss */
+/* line 389, ../sass/screen.scss */
 .is-content-open .timeline-slide.current h2 {
   -moz-transition: top 0.9s cubic-bezier(0.7, 0, 0.3, 1), color 0.3s linear 0s;
   -o-transition: top 0.9s cubic-bezier(0.7, 0, 0.3, 1), color 0.3s linear 0s;
@@ -496,7 +522,7 @@ button.content-switch {
   -webkit-transition-delay: 0s, 0s;
   transition: top 0.9s cubic-bezier(0.7, 0, 0.3, 1), color 0.3s linear 0s;
 }
-/* line 366, ../sass/screen.scss */
+/* line 391, ../sass/screen.scss */
 .is-content-open .timeline-slide.current h2 span {
   -moz-transition: color 0.3s linear 0s;
   -o-transition: color 0.3s linear 0s;
@@ -504,7 +530,7 @@ button.content-switch {
   -webkit-transition-delay: 0s;
   transition: color 0.3s linear 0s;
 }
-/* line 370, ../sass/screen.scss */
+/* line 395, ../sass/screen.scss */
 .is-content-open .timeline-slide.current h2:before {
   -moz-transition: border 0.3s cubic-bezier(0.7, 0, 0.3, 1) 0s;
   -o-transition: border 0.3s cubic-bezier(0.7, 0, 0.3, 1) 0s;
@@ -512,7 +538,7 @@ button.content-switch {
   -webkit-transition-delay: 0s;
   transition: border 0.3s cubic-bezier(0.7, 0, 0.3, 1) 0s;
 }
-/* line 378, ../sass/screen.scss */
+/* line 403, ../sass/screen.scss */
 .is-content-open.show-content .timeline-slide.current h2 {
   -moz-transition: top 0.9s cubic-bezier(0.7, 0, 0.3, 1), color 0.3s linear 0.6s;
   -o-transition: top 0.9s cubic-bezier(0.7, 0, 0.3, 1), color 0.3s linear 0.6s;
@@ -520,7 +546,7 @@ button.content-switch {
   -webkit-transition-delay: 0s, 0.6s;
   transition: top 0.9s cubic-bezier(0.7, 0, 0.3, 1), color 0.3s linear 0.6s;
 }
-/* line 381, ../sass/screen.scss */
+/* line 406, ../sass/screen.scss */
 .is-content-open.show-content .timeline-slide.current h2 span {
   -moz-transition: color 0.3s linear 0.6s;
   -o-transition: color 0.3s linear 0.6s;
@@ -528,7 +554,7 @@ button.content-switch {
   -webkit-transition-delay: 0.6s;
   transition: color 0.3s linear 0.6s;
 }
-/* line 385, ../sass/screen.scss */
+/* line 410, ../sass/screen.scss */
 .is-content-open.show-content .timeline-slide.current h2:before {
   -moz-transition: border 0.3s cubic-bezier(0.7, 0, 0.3, 1) 0.6s;
   -o-transition: border 0.3s cubic-bezier(0.7, 0, 0.3, 1) 0.6s;
@@ -537,7 +563,7 @@ button.content-switch {
   transition: border 0.3s cubic-bezier(0.7, 0, 0.3, 1) 0.6s;
 }
 
-/* line 393, ../sass/screen.scss */
+/* line 418, ../sass/screen.scss */
 .timeline-slide.current h2:after {
   -moz-transition: width 0.3s cubic-bezier(0.7, 0, 0.3, 1) 0.6s;
   -o-transition: width 0.3s cubic-bezier(0.7, 0, 0.3, 1) 0.6s;
@@ -546,20 +572,20 @@ button.content-switch {
   transition: width 0.3s cubic-bezier(0.7, 0, 0.3, 1) 0.6s;
 }
 
-/* line 397, ../sass/screen.scss */
+/* line 422, ../sass/screen.scss */
 .show-content .timeline-slide.current h2 {
   top: 105%;
   color: #333;
 }
-/* line 401, ../sass/screen.scss */
+/* line 426, ../sass/screen.scss */
 .show-content .timeline-slide.current h2 span {
   color: #333;
 }
-/* line 405, ../sass/screen.scss */
+/* line 430, ../sass/screen.scss */
 .show-content .timeline-slide.current h2:before {
   border-top: 2px #333 solid;
 }
-/* line 409, ../sass/screen.scss */
+/* line 434, ../sass/screen.scss */
 .show-content .timeline-slide.current h2:after {
   width: 0;
   -moz-transition: width 0.3s cubic-bezier(0.7, 0, 0.3, 1) 0s;
@@ -570,7 +596,7 @@ button.content-switch {
 }
 
 /* Content */
-/* line 419, ../sass/screen.scss */
+/* line 444, ../sass/screen.scss */
 .js .pages {
   position: absolute;
   top: 100%;
@@ -583,7 +609,7 @@ button.content-switch {
   -webkit-transition-delay: 0.6s;
   transition: height 0s 0.6s;
 }
-/* line 427, ../sass/screen.scss */
+/* line 452, ../sass/screen.scss */
 .js .pages .content {
   position: absolute;
   top: 150px;
@@ -598,7 +624,7 @@ button.content-switch {
   transition: height 0s 0.6s;
 }
 
-/* line 438, ../sass/screen.scss */
+/* line 463, ../sass/screen.scss */
 .js .show-content .pages {
   -moz-transition: none;
   -o-transition: none;
@@ -607,7 +633,7 @@ button.content-switch {
   height: auto;
 }
 
-/* line 443, ../sass/screen.scss */
+/* line 468, ../sass/screen.scss */
 .pages .content.show {
   height: auto;
   -moz-transition: none;
@@ -617,7 +643,7 @@ button.content-switch {
 }
 
 /* Switch */
-/* line 449, ../sass/screen.scss */
+/* line 474, ../sass/screen.scss */
 .switch-min .timeline-img-dragger-large .timeline-slide > *:not(.timeline-img-wrap),
 .switch-max .timeline-img-dragger-small .timeline-slide > *:not(.timeline-img-wrap) {
   /* fade out everything except image */
@@ -628,7 +654,7 @@ button.content-switch {
   transition: none;
 }
 
-/* line 455, ../sass/screen.scss */
+/* line 480, ../sass/screen.scss */
 .switch-min .timeline-img-dragger-large,
 .switch-max .timeline-img-dragger-small {
   -moz-transition: -moz-transform 0.6s cubic-bezier(0.7, 0, 0.3, 1);
@@ -637,43 +663,43 @@ button.content-switch {
   transition: transform 0.6s cubic-bezier(0.7, 0, 0.3, 1);
 }
 
-/* line 460, ../sass/screen.scss */
+/* line 485, ../sass/screen.scss */
 .timeline-img-dragger-small button.content-switch {
   opacity: 0;
   pointer-events: none;
 }
 
 /* Helper classes */
-/* line 466, ../sass/screen.scss */
+/* line 491, ../sass/screen.scss */
 .no-transition {
   -webkit-transition: none !important;
   transition: none !important;
 }
 
-/* line 471, ../sass/screen.scss */
+/* line 496, ../sass/screen.scss */
 .hide {
   opacity: 0 !important;
   pointer-events: none !important;
 }
 
 @media screen and (max-width: 63.125em) {
-  /* line 477, ../sass/screen.scss */
+  /* line 502, ../sass/screen.scss */
   .dragslider h2 {
     font-size: 2.8em;
   }
 
-  /* line 480, ../sass/screen.scss */
+  /* line 505, ../sass/screen.scss */
   .pages .content {
     font-size: 100%;
   }
 
-  /* line 483, ../sass/screen.scss */
+  /* line 508, ../sass/screen.scss */
   .pages .content h2 {
     font-size: 3em;
   }
 }
 @media screen and (max-width: 650px) {
-  /* line 489, ../sass/screen.scss */
+  /* line 514, ../sass/screen.scss */
   button.slider-switch {
     display: none;
   }
