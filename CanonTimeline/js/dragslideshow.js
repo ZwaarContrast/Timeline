@@ -84,6 +84,9 @@
 		// current
 		this.current = 0;
 
+		// Content image percentage
+		this.contentImagePercentage = 25;
+
 		// status
 		this.isFullscreen = true;
 		

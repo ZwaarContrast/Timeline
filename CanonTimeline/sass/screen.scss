@@ -3,6 +3,8 @@
 @import 'compass/utilities';
 @import 'compass/typography';
 
+$content-transition-image-percentage:25;
+
 html, body, .js .container, .js .dragslider, .js .timeline-img-dragger .timeline-handle{
 	height: 100%;
 }
@@ -44,10 +46,6 @@ html.js, .js body{
 	height: 50px;
 	background-color: #333;
 	@include transform(translate3d(0,-100%,0));
-	// @include transition(opacity 0.3s);
-	// &.hide{
-	// 	@include transition(opacity 0.3s);
-	// }
 
 	&.is-content-open{
 	}
@@ -59,15 +57,26 @@ html.js, .js body{
 	z-index: 100;
 	top: 50%;
 	margin-top: -25px;
-	padding: 10px 10px;
+	padding: 0px 0px 10px;
 	line-height: 30px;
 	text-decoration: none;
 	color: #fff;
+	display: block;
+	width: 40px;
+	height: 40px;
 	&.timeline-arrow-navigation-arrow-next{
 		right: 0;
+		background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiIHZpZXdCb3g9IjQwLjUgMzAuNCAxOS4xIDM0LjEiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgNDAuNSAzMC40IDE5LjEgMzQuMSIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PGc+PHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTQxLjEsNjRjLTAuOC0wLjgtMC44LTIsMC0yLjhsMTMuNy0xMy43TDQxLjIsMzMuOGMtMC44LTAuOC0wLjgtMiwwLTIuOHMyLTAuOCwyLjgsMGwxNSwxNWMwLjgsMC44LDAuOCwyLDAsMi44TDQ0LDYzLjljLTAuNCwwLjQtMC45LDAuNi0xLjQsMC42UzQxLjYsNjQuMyw0MS4xLDY0eiIvPjwvZz48L3N2Zz4=);
+		background-repeat: no-repeat;
+		background-position: center center;
+		background-size: 10px;
 	}
 	&.timeline-arrow-navigation-arrow-previous{
 		left: 0;
+		background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiIHZpZXdCb3g9IjQwLjUgMzAuNCAxOS4xIDM0LjEiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgNDAuNSAzMC40IDE5LjEgMzQuMSIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PGc+PHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTU3LjUsNjQuNWMtMC41LDAtMS0wLjItMS40LTAuNmwtMTUtMTUuMWMtMC44LTAuOC0wLjgtMiwwLTIuOGwxNS0xNWMwLjgtMC44LDItMC44LDIuOCwwczAuOCwyLDAsMi44TDQ1LjMsNDcuNUw1OSw2MS4yYzAuOCwwLjgsMC44LDIsMCwyLjhDNTguNSw2NC4zLDU4LDY0LjUsNTcuNSw2NC41eiIvPjwvZz48L3N2Zz4=);
+		background-repeat: no-repeat;
+		background-position: center center;
+		background-size: 10px;
 	}
 }
 
@@ -102,7 +111,7 @@ html.js, .js body{
 		}
 	}
 	&.show-content{
-		@include transform(translate3d(0,-75%,0));
+		@include transform(translate3d(0,($content-transition-image-percentage - 100)*1%,0));
 		h2{
 			@include text-shadow(none);
 			&:before{
@@ -145,11 +154,17 @@ button.timeline-zoom-switch{
 	color: #000;
 	outline: none;
 	background-color: #ffefbe;
+	background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiIHZpZXdCb3g9IjAgMCA2Ny4yIDIwLjYiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDY3LjIgMjAuNiIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PGc+PHBhdGggZmlsbD0iIzMzMzMzMyIgZD0iTTM1LjIsMEgyMy42bC0yLjMsMS45bC0zLjQsMi45bC0zLjEtMi45TDEyLjYsMEgxQzAuNiwwLDAsMC40LDAsMXMwLjYsMSwxLDFoMTAuNWw2LjcsNS43bDYuNy01LjdoMTAuNWMwLjYsMCwxLTAuNCwxLTFDMzYuMiwwLjQsMzUuOCwwLDM1LjIsMHoiLz48L2c+PGc+PHBhdGggZmlsbD0iIzMzMzMzMyIgZD0iTTY2LjIsMEg1NC42bC0yLjMsMS45bC0zLjQsMi45bC0zLjEtMi45TDQzLjYsMEgzMmMtMC40LDAtMSwwLjQtMSwxczAuNiwxLDEsMWgxMC41bDYuNyw1LjdsNi43LTUuN2gxMC41YzAuNiwwLDEtMC40LDEtMUM2Ny4yLDAuNCw2Ni44LDAsNjYuMiwweiIvPjwvZz48Zz48cGF0aCBmaWxsPSIjMzMzMzMzIiBkPSJNMzYuMiwxOS43YzAtMC42LTAuNC0xLTEtMUgyNC44TDE4LjEsMTNsLTYuNyw1LjdIMWMtMC40LDAtMSwwLjQtMSwxczAuNiwxLDEsMWgxMS42bDIuMy0xLjlsMy4xLTIuOWwzLjQsMi45bDIuMywxLjloMTEuNkMzNS44LDIwLjYsMzYuMiwyMC4yLDM2LjIsMTkuN3oiLz48L2c+PGc+PHBhdGggZmlsbD0iIzMzMzMzMyIgZD0iTTY3LjIsMTkuN2MwLTAuNi0wLjQtMS0xLTFINTUuOEw0OS4xLDEzbC02LjcsNS43SDMyYy0wLjQsMC0xLDAuNC0xLDFzMC42LDEsMSwxaDExLjZsMi4zLTEuOWwzLjEtMi45bDMuNCwyLjlsMi4zLDEuOWgxMS42QzY2LjgsMjAuNiw2Ny4yLDIwLjIsNjcuMiwxOS43eiIvPjwvZz48L3N2Zz4=);
+	background-repeat: no-repeat;
+	background-position: right 14px center;
+	background-size: 45px;
 
 	@include opacity(0.7);
 	@include transition(opacity 0.3s, visibility 0s);
 	&:after{
 		content: 'Bekijk tijdlijn';
+		float: right;
+		padding-right: 74px;
 	}
 	&.view-maxi:after{
 		content: 'Sluit tijdlijn';
