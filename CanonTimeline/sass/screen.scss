@@ -80,6 +80,7 @@ html.js, .js body{
 
 	&:hover{
 		@include opacity(1);
+		cursor:pointer;
 	}
 }
 
@@ -162,7 +163,7 @@ button.timeline-zoom-switch{
 	background-position: right 14px center;
 	background-size: 45px;
 
-	@include opacity(0.7);
+	@include opacity(0.9);
 	@include transition(opacity 0.3s, visibility 0s);
 	&:after{
 		content: 'Bekijk tijdlijn';
@@ -176,6 +177,7 @@ button.timeline-zoom-switch{
 	}
 	&:hover{
 		opacity: 1;
+		cursor:pointer;
 	}
 
 	.is-content-open &{
