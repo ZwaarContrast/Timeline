@@ -1,0 +1,18 @@
+/*
+ *	Layout file which holds the general layout like grids
+ */
+
+section,.section{
+	width:100%;
+	position:relative;
+	overflow:hidden;
+}
+
+.wrapper{
+	position:relative;
+	width:100%;
+	
+	margin:0 auto;
+	overflow:hidden;
+	max-width:1240px;
+}

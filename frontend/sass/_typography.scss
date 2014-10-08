@@ -1,0 +1,186 @@
+/*
+ *	Typography file which holds the general typography for the site
+ */
+
+/*
+ * General typography
+ */
+body{
+	font-family: 'Droid serif',serif;
+}
+h1, h2, h3, h4{
+	font-family: 'Montserrat';
+	font-weight: bold;
+}
+.to-top{
+	margin: 0 0 2em 0;
+	font-family: 'Montserrat';
+	font-size: 1.6em;
+	font-weight: bold;
+	padding-top:1em;
+	color: $color-text-main;
+}
+
+/*
+ * Window typography
+ */
+.window-header-heading{
+	font-size: 5em;
+	line-height: 72/50*1em;
+	color: $color-white;
+}
+.wrapper-window-content{
+	& > p, & > ul, & > ol{
+		margin: 32/18*1em 27% 32/18*1em 27%;
+		font-size: 1.8em;
+		line-height: 32/18*1em;
+		vertical-align: middle;
+		color: $color-text-main;
+		&:first-of-type{
+			font-weight: bold;
+		}
+		a{
+			font-weight: bold;
+			color: $color-text-main;
+		}
+	}
+	& > blockquote{
+		margin: 0 27% 0 27%;
+		color: $color-text-main;
+		p{
+			margin: 32/40*1em 0 32/40*1em 0;
+			font-size: 4em;
+			line-height: 4.8/4*1em;
+		}
+		cite{
+			position: relative;
+			display: inline-block;
+			margin-left: 150px;
+			font-family: 'Dawning of a New Day';
+			font-size: 4em;
+			line-height: 1.2em;
+			&::before{
+				position: absolute;
+				top: 33px;
+				left: -150px;
+				width: 140px;
+				border-top: solid 2px $color-text-main;
+				content: '';
+			}
+		}
+	}
+	.window-content-image-caption{
+		font-family: 'Montserrat';
+		font-size: 1.6em;
+		font-weight: bold;
+		line-height: 24/16*1em;
+		vertical-align: middle;
+		color: $color-text-main;
+	}
+}
+.window-readmore-heading{
+	margin: 32/24*1em 0 32/24*1em 0;
+	font-size: 2.4em;
+	line-height: 1.3333333em;
+}
+.window-readmore-list-item{
+	padding-bottom: 24/18*1em;
+	font-size: 1.8em;
+	line-height: 1.33333333em;
+}
+.window-readmore-loadmore{
+	margin: 32/18*1em 0 64/18*1em 0;
+	font-family: 'Montserrat';
+	font-size: 1.8em;
+	font-weight: bold;
+	line-height: 24/18*1em;
+}
+.window-readmore-list-link{
+	color: $color-text-main;
+}
+.window-footer-heading{
+	font-size: 4em;
+}
+.window-readmore-loadmore-link{
+	color: $color-text-readmore-loadmore-link;
+}
+ul.window-content-links-list{
+	.window-content-links-item{
+		&.window-content-links-item-school{
+			.window-content-links-link-title{
+				margin: 6/30*1em 0;
+				font-family: 'Dawning of a New Day';
+				font-size: 3em;
+				font-weight: normal;
+				line-height: 24/30*1em;
+			}
+		}
+	}
+	.window-content-links-link{
+		color: $color-text-main;
+	}
+	.window-content-links-link-about{
+		font-family: 'Montserrat';
+		font-size: 1.4em;
+		font-weight: bold;
+		line-height: 24/14*1em;
+	}
+	.window-content-links-link-title{
+		font-size: 1.8em;
+		line-height: 24/18*1em;
+	}
+	.window-content-links-link-source{
+		font-family: 'Montserrat';
+		font-size: 1.4em;
+		font-weight: bold;
+		line-height: 24/14*1em;
+		text-align: right;
+	}
+	.window-content-links-link-go{
+		font-family: 'Montserrat';
+		font-size: 1.8em;
+		font-weight: bold;
+		line-height: 40/18*1em;
+		color: $color-white;
+	}
+}
+/*
+ * Period typography
+ */
+.period-lead-text{
+	font-size: 1.8em;
+	line-height: 32/18*1em;
+	vertical-align: middle;
+	color: $color-text-main;
+}
+.period-windows-item-heading{
+	margin: 32/50*1em 0;
+	font-size: 5em;
+	line-height: 64/50*1em;
+}
+.period-windows-item-text{
+	margin: 0 0 32/18*1em 0;
+	font-size: 1.8em;
+	line-height: 32/18*1em;
+	vertical-align: middle;
+	color: $color-text-main;
+}
+.period-windows-item-author{
+	font-family: 'Montserrat';
+	font-size: 1.4em;
+	font-weight: bold;
+	line-height: 32/14*1em;
+}
+.period-windows-item-author-name{
+	font-family: 'Dawning of a New Day';
+	font-size: 3em;
+	font-weight: normal;
+	line-height: 32/30*1em;
+}
+.period-windows-item-image-read{
+	font-family: 'Montserrat';
+	font-size: 1.8em;
+	font-weight: bold;
+	line-height: 32/18*1em;
+	color: $color-text-main;
+}

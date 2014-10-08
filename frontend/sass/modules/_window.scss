@@ -1,0 +1,215 @@
+/*
+ *	Header image
+ */
+.window-header{
+	height: 800px;
+}
+.window-header-heading{
+	position: absolute;
+	top: 30%;
+	left: 50%;
+}
+.window-header-image{
+	position: absolute;
+	top: 50%;
+	display: block;
+	width: 100%;
+
+	@include transform(translate3d(0,-50%,0));
+}
+
+/*
+ *	Images in the content of a window
+ */
+
+.window-content-image{
+	position: relative;
+	margin: 6.4em 0 6.4em 0;
+	line-height: 0;
+}
+
+.window-content-image-image{
+	width: 100%;
+}
+p.window-content-image-caption{
+	position: absolute;
+	top: 100%;
+	left: 0;
+	width: 240px;
+	margin: -64px 0 0 0 ;
+	padding: 15px 10px  48px 0;
+	background-color: $color-bg-image-caption;
+	&::after{
+		position: absolute;
+		top: 64px;
+		right: -81px;
+		width: 80px;
+		height: 70px;
+		content: '';
+		border-left: 1px solid $color-border-image-caption;
+		background-repeat: no-repeat;
+		background-position: -40px -40px;
+		background-size: 100px 100px;
+
+		@include background-image(radial-gradient(center, ellipse cover, rgba(0,0,0,.08) 0%,rgba(0,0,0,0) 50%,rgba(0,0,0,0) 100%));
+	}
+}
+.window-content-image-left{
+	.window-content-image-image{
+		width: 73%;
+	}
+}
+.window-content-image-right{
+	text-align: right;
+	.window-content-image-image{
+		width: 73%;
+	}
+	p.window-content-image-caption{
+		right: 0;
+		left: auto;
+		&::after{
+			left: -81px;
+			width: 80px;
+			content: '';
+			border-right: 1px solid #e7e3de;
+			border-left: 0;
+			background-repeat: no-repeat;
+			background-position: 40px -40px;
+			background-size: 100px 100px;
+		}
+	}
+}
+
+/*
+ *	Read more list under the content of a window
+ */
+
+.window-readmore{
+	max-width: 565px;
+	margin: 0 auto;
+}
+.window-readmore-list-item{
+	position: relative;
+	padding-left: 30px;
+	background-image: url("../images/icons/arrowhead-gray/right.svg");
+    background-repeat: no-repeat;
+    background-position: top 7px left;
+    background-size:6px auto;
+}
+
+.window-readmore-loadmore-link{
+	position: relative;
+}
+.window-readmore-loadmore-link::after{
+	position: absolute;
+	bottom: -20px;
+	left: 0;
+	width: 91px;
+	height: 20px;
+	content: '';
+	background-image: url("../images/icons/curl-gray/down.svg");
+	background-repeat: no-repeat;
+	background-size: 100% auto;
+}
+
+/*
+ *	Window footer with next article
+ */
+ 
+.window-footer{
+	height: 360px;
+}
+.window-footer-image{
+	position: absolute;
+	top: 50%;
+	display: block;
+	width: 100%;
+
+	@include transform(translate3d(0,-50%,0));
+}
+.window-footer-heading{
+	position: absolute;
+	top: 200px;
+	left: 50%;
+}
+
+/*
+ * Links in the sidebar of window
+ */
+.window-content-links{
+	position:relative;
+	width:100%;
+}
+ul.window-content-links-list {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 0;
+
+    
+    .window-content-links-item {
+		position:absolute;
+		background-image: url("../images/icons/arrow-drawn/1.svg");
+	    background-repeat: no-repeat;
+	    background-position: top left;
+	    background-size: 60px auto;
+	    padding: 30px 0px 0 80px;
+   		width: 270px;
+   		right: 0;
+
+
+		&.window-content-links-item-school{
+			background-image: url("../images/icons/arrow-drawn/2.svg");
+			.window-content-links-link {
+				background-image: url("../images/icons/other/scholieren.svg");
+			    background-repeat: no-repeat;
+			    background-position: top  right 90px;
+			    background-size:50px auto;
+			}
+		}
+	}
+
+	.window-content-links-link {
+		position:relative;
+
+		display: block;
+	}
+
+	.window-content-links-link-about {
+		display:block;
+	}
+
+	.window-content-links-link-title {
+		display:block;
+		padding-right:90px;
+	}
+
+	.window-content-links-link-source {
+		display:block;
+		padding-right:90px;
+	}
+
+	.window-content-links-link-go {
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		display:block;
+		background-color:$color-text-main;
+		background-image:url('../images/icons/curl-white/right.svg');
+		background-repeat: no-repeat;
+		background-position: top 1px right 5px;
+		background-size: auto 38px;
+		color:$color-white;
+		width:45px;
+		height:40px;
+		line-height: 39px;
+		padding-left: 15px;
+	}
+	#wikipedia{
+		top:100px;
+	}
+	#school{
+		top:400px;
+	}
+}
+

@@ -1,0 +1,46 @@
+/*
+ *	Main stylesheet
+ */
+
+//Compass imports
+@import 'compass/reset/';
+@import 'compass/css3/';
+@import 'compass/utilities';
+@import 'compass/typography';
+
+//Variables
+@import '_colors.scss';
+@import '_typography.scss';
+@import '_mixins.scss';
+@import '_variables.scss';
+@import '_z-index.scss';
+
+//File imports
+@import '_animations.scss';
+@import '_buttons.scss';
+@import '_layout.scss';
+
+//General styling
+body{
+	font-size: 10px;
+	color: $color-text-main;
+}
+a{
+	text-decoration: none;
+}
+
+.to-top{
+	position: relative;
+	display: block;
+	width: 160px;
+	text-align: right;
+	vertical-align: bottom;
+	background-image:url('../images/icons/curl-gray/up.svg');
+	background-repeat: no-repeat;
+	background-position: top right;
+	background-size: 100% auto;
+}
+
+//Module imports
+@import 'modules/_window.scss';
+@import 'modules/_period.scss';
