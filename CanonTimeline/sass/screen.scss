@@ -163,8 +163,10 @@ button.timeline-zoom-switch{
 	@include transition(opacity 0.3s, visibility 0s);
 	&:after{
 		content: 'Bekijk tijdlijn';
-		float: right;
-		padding-right: 74px;
+		right:74px;
+		position: absolute;
+		top:0;
+		line-height: 50px;
 	}
 	&.view-maxi:after{
 		content: 'Sluit tijdlijn';

@@ -255,18 +255,20 @@ button.timeline-zoom-switch {
 /* line 164, ../sass/screen.scss */
 button.timeline-zoom-switch:after {
   content: 'Bekijk tijdlijn';
-  float: right;
-  padding-right: 74px;
+  right: 74px;
+  position: absolute;
+  top: 0;
+  line-height: 50px;
 }
-/* line 169, ../sass/screen.scss */
+/* line 171, ../sass/screen.scss */
 button.timeline-zoom-switch.view-maxi:after {
   content: 'Sluit tijdlijn';
 }
-/* line 172, ../sass/screen.scss */
+/* line 174, ../sass/screen.scss */
 button.timeline-zoom-switch:hover {
   opacity: 1;
 }
-/* line 176, ../sass/screen.scss */
+/* line 178, ../sass/screen.scss */
 .is-content-open button.timeline-zoom-switch {
   -moz-transition: opacity 0.3s linear 0s, visibility 0s 0.3s;
   -o-transition: opacity 0.3s linear 0s, visibility 0s 0.3s;
@@ -278,18 +280,18 @@ button.timeline-zoom-switch:hover {
   visibility: hidden;
 }
 
-/* line 184, ../sass/screen.scss */
+/* line 186, ../sass/screen.scss */
 .no-js button.timeline-zoom-switch {
   display: none;
 }
 
 /* Dragger */
-/* line 191, ../sass/screen.scss */
+/* line 193, ../sass/screen.scss */
 .timeline-img-dragger {
   position: relative;
   z-index: 100;
 }
-/* line 194, ../sass/screen.scss */
+/* line 196, ../sass/screen.scss */
 .js .timeline-img-dragger {
   position: absolute;
   top: 50%;
@@ -301,7 +303,7 @@ button.timeline-zoom-switch:hover {
   -webkit-transform: translate3d(-50%, -50%, 0);
   transform: translate3d(-50%, -50%, 0);
 }
-/* line 202, ../sass/screen.scss */
+/* line 204, ../sass/screen.scss */
 .js .timeline-img-dragger .timeline-handle {
   font-size: 0;
   white-space: nowrap;
@@ -309,7 +311,7 @@ button.timeline-zoom-switch:hover {
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
 }
-/* line 209, ../sass/screen.scss */
+/* line 211, ../sass/screen.scss */
 .no-js .timeline-img-dragger {
   position: relative;
   clear: both;
@@ -319,7 +321,7 @@ button.timeline-zoom-switch:hover {
   text-align: center;
   white-space: nowrap;
 }
-/* line 217, ../sass/screen.scss */
+/* line 219, ../sass/screen.scss */
 .no-js .timeline-img-dragger .timeline-handle {
   position: relative;
   clear: both;
@@ -331,13 +333,13 @@ button.timeline-zoom-switch:hover {
   white-space: nowrap;
 }
 
-/* line 231, ../sass/screen.scss */
+/* line 233, ../sass/screen.scss */
 .js .timeline-img-dragger-large {
   width: 100%;
   height: 100%;
 }
 
-/* line 237, ../sass/screen.scss */
+/* line 239, ../sass/screen.scss */
 .timeline-img-dragger .timeline-slide {
   position: relative;
   display: inline-block;
@@ -360,26 +362,26 @@ button.timeline-zoom-switch:hover {
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
 }
-/* line 252, ../sass/screen.scss */
+/* line 254, ../sass/screen.scss */
 .no-js .timeline-img-dragger .timeline-slide {
   width: 300px;
   min-height: 200px;
   font-size: 7px;
 }
-/* line 257, ../sass/screen.scss */
+/* line 259, ../sass/screen.scss */
 .timeline-img-dragger .timeline-slide:active {
   cursor: -webkit-grabbing;
   cursor: -moz-grabbing;
 }
 
-/* line 263, ../sass/screen.scss */
+/* line 265, ../sass/screen.scss */
 .timeline-img-wrap {
   position: absolute;
   overflow: hidden;
   width: 100%;
   height: 100%;
 }
-/* line 268, ../sass/screen.scss */
+/* line 270, ../sass/screen.scss */
 .timeline-img-wrap img {
   position: absolute;
   top: 50%;
@@ -396,7 +398,7 @@ button.timeline-zoom-switch:hover {
   -webkit-transition: -webkit-transform 0.9s cubic-bezier(0.7, 0, 0.3, 1);
   transition: transform 0.9s cubic-bezier(0.7, 0, 0.3, 1);
 }
-/* line 278, ../sass/screen.scss */
+/* line 280, ../sass/screen.scss */
 .show-content .timeline-img-wrap img {
   -moz-transform: translate3d(-50%, -25%, 0);
   -ms-transform: translate3d(-50%, -25%, 0);
@@ -405,7 +407,7 @@ button.timeline-zoom-switch:hover {
 }
 
 @media screen and (min-aspect-ratio: 1280 / 850) {
-  /* line 285, ../sass/screen.scss */
+  /* line 287, ../sass/screen.scss */
   .timeline-img-dragger .timeline-img-wrap img {
     width: calc(100% + 0.2px);
     height: auto;
@@ -427,7 +429,7 @@ button.timeline-zoom-switch:hover {
     transform: translate3d(0, 0, 0);
   }
 }
-/* line 305, ../sass/screen.scss */
+/* line 307, ../sass/screen.scss */
 .js .timeline-slide h2 {
   position: absolute;
   color: #fff;
@@ -436,7 +438,7 @@ button.timeline-zoom-switch:hover {
   -webkit-transition: opacity 0.3s;
   transition: opacity 0.3s;
 }
-/* line 311, ../sass/screen.scss */
+/* line 313, ../sass/screen.scss */
 .js .timeline-img-dragger-large .timeline-slide h2 {
   top: 50%;
   left: 100px;
@@ -445,7 +447,7 @@ button.timeline-zoom-switch:hover {
   -webkit-transform: translate3d(0, -50%, 0);
   transform: translate3d(0, -50%, 0);
 }
-/* line 317, ../sass/screen.scss */
+/* line 319, ../sass/screen.scss */
 .timeline-slide h2 span {
   position: relative;
   position: absolute;
@@ -461,7 +463,7 @@ button.timeline-zoom-switch:hover {
   text-transform: lowercase;
   color: white;
 }
-/* line 332, ../sass/screen.scss */
+/* line 334, ../sass/screen.scss */
 .timeline-img-dragger-small .timeline-slide h2 {
   top: 100%;
   overflow: hidden;
@@ -475,19 +477,19 @@ button.timeline-zoom-switch:hover {
   -webkit-animation: slideUpFade 0.4s 0s;
   animation: slideUpFade 0.4s 0s;
 }
-/* line 343, ../sass/screen.scss */
+/* line 345, ../sass/screen.scss */
 .timeline-img-dragger-small .timeline-slide h2 span {
   right: auto;
   bottom: 0;
   left: 0;
   font-size: 0.35em;
 }
-/* line 349, ../sass/screen.scss */
+/* line 351, ../sass/screen.scss */
 .timeline-img-dragger-small .timeline-slide h2:before, .timeline-img-dragger-small .timeline-slide h2:after {
   top: 64px;
 }
 
-/* line 355, ../sass/screen.scss */
+/* line 357, ../sass/screen.scss */
 .timeline-img-dragger-small .timeline-slide.current h2 {
   color: #fff;
   -moz-animation-delay: 0s;
@@ -499,7 +501,7 @@ button.timeline-zoom-switch:hover {
   transition: color 0.3s, opacity 0.3s;
 }
 
-/* line 362, ../sass/screen.scss */
+/* line 364, ../sass/screen.scss */
 button.timeline-content-switch {
   position: absolute;
   z-index: 1000;
@@ -531,16 +533,16 @@ button.timeline-content-switch {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
   opacity: 0.7;
 }
-/* line 386, ../sass/screen.scss */
+/* line 388, ../sass/screen.scss */
 .no-js button.timeline-content-switch {
   display: none;
 }
-/* line 390, ../sass/screen.scss */
+/* line 392, ../sass/screen.scss */
 button.timeline-content-switch:hover {
   filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
   opacity: 1;
 }
-/* line 394, ../sass/screen.scss */
+/* line 396, ../sass/screen.scss */
 button.timeline-content-switch:before {
   content: 'Ontdek dit tijdvak';
   background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMjA1IDU5Ni42IDQ2MS40IDk2LjciIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMjA1IDU5Ni42IDQ2MS40IDk2LjciIHhtbDpzcGFjZT0icHJlc2VydmUiPjx0aXRsZT5pY29uIDMxIHN1bnNldDwvdGl0bGU+PGRlc2M+Q3JlYXRlZCB3aXRoIFNrZXRjaC48L2Rlc2M+PGc+PHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTY1NC40LDU5Ni42SDUwNy4xbC0yOSwyNC4xbC00My40LDM2LjJMMzk2LDYyMC43TDM2Nyw1OTYuNkgyMTkuN2MtNC44LDAtMTIuMSw0LjgtMTIuMSwxMi4xczcuMiwxMi4xLDEyLjEsMTIuMWgxMzIuOGw4NC41LDcyLjVsODQuNS03Mi41aDEzMi44YzcuMiwwLDEyLjEtNC44LDEyLjEtMTIuMUM2NjYuNCw2MDEuNCw2NjEuNiw1OTYuNiw2NTQuNCw1OTYuNnoiLz48L2c+PC9zdmc+);
@@ -564,7 +566,7 @@ button.timeline-content-switch:before {
   -webkit-transition-delay: 0.7s;
   transition: opacity 0.2s 0.7s;
 }
-/* line 413, ../sass/screen.scss */
+/* line 415, ../sass/screen.scss */
 button.timeline-content-switch:after {
   content: 'Terug naar tijdlijn';
   background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMjA1IDU5Ni42IDQ2MS40IDk2LjciIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMjA1IDU5Ni42IDQ2MS40IDk2LjciIHhtbDpzcGFjZT0icHJlc2VydmUiPjx0aXRsZT5pY29uIDMxIHN1bnNldDwvdGl0bGU+PGRlc2M+Q3JlYXRlZCB3aXRoIFNrZXRjaC48L2Rlc2M+PGc+PHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTY1NC40LDY5My4zSDUwNy4xbC0yOS0yNC4xTDQzNC42LDYzM0wzOTYsNjY5LjJMMzY3LDY5My4zSDIxOS43Yy00LjgsMC0xMi4xLTQuOC0xMi4xLTEyLjFzNy4yLTEyLjEsMTIuMS0xMi4xaDEzMi44bDg0LjUtNzIuNWw4NC41LDcyLjVoMTMyLjhjNy4yLDAsMTIuMSw0LjgsMTIuMSwxMi4xUzY2MS42LDY5My4zLDY1NC40LDY5My4zeiIvPjwvZz48L3N2Zz4=);
@@ -589,7 +591,7 @@ button.timeline-content-switch:after {
   -webkit-transition-delay: 0s;
   transition: opacity 0.2s 0s;
 }
-/* line 433, ../sass/screen.scss */
+/* line 435, ../sass/screen.scss */
 .view-maxi button.timeline-content-switch {
   -moz-transition: opacity 0.3s linear 0s, visibility 0s 0.3s;
   -o-transition: opacity 0.3s linear 0s, visibility 0s 0.3s;
@@ -601,12 +603,12 @@ button.timeline-content-switch:after {
   visibility: hidden;
 }
 
-/* line 441, ../sass/screen.scss */
+/* line 443, ../sass/screen.scss */
 .show-content button.timeline-content-switch {
   border-color: #c5d3d6;
   color: #c5d3d6;
 }
-/* line 445, ../sass/screen.scss */
+/* line 447, ../sass/screen.scss */
 .show-content button.timeline-content-switch:before {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;
@@ -616,7 +618,7 @@ button.timeline-content-switch:after {
   -webkit-transition-delay: 0s;
   transition: opacity 0.2s 0s;
 }
-/* line 450, ../sass/screen.scss */
+/* line 452, ../sass/screen.scss */
 .show-content button.timeline-content-switch:after {
   filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
   opacity: 1;
@@ -627,7 +629,7 @@ button.timeline-content-switch:after {
   transition: opacity 0.2s 0.7s;
 }
 
-/* line 458, ../sass/screen.scss */
+/* line 460, ../sass/screen.scss */
 .is-content-open .timeline-slide.current h2 {
   -moz-transition: top 0.9s cubic-bezier(0.7, 0, 0.3, 1), color 0.3s linear 0s;
   -o-transition: top 0.9s cubic-bezier(0.7, 0, 0.3, 1), color 0.3s linear 0s;
@@ -635,7 +637,7 @@ button.timeline-content-switch:after {
   -webkit-transition-delay: 0s, 0s;
   transition: top 0.9s cubic-bezier(0.7, 0, 0.3, 1), color 0.3s linear 0s;
 }
-/* line 460, ../sass/screen.scss */
+/* line 462, ../sass/screen.scss */
 .is-content-open .timeline-slide.current h2 span {
   -moz-transition: color 0.3s linear 0s;
   -o-transition: color 0.3s linear 0s;
@@ -643,7 +645,7 @@ button.timeline-content-switch:after {
   -webkit-transition-delay: 0s;
   transition: color 0.3s linear 0s;
 }
-/* line 463, ../sass/screen.scss */
+/* line 465, ../sass/screen.scss */
 .is-content-open .timeline-slide.current h2:before {
   -moz-transition: border 0.3s cubic-bezier(0.7, 0, 0.3, 1) 0s;
   -o-transition: border 0.3s cubic-bezier(0.7, 0, 0.3, 1) 0s;
@@ -651,7 +653,7 @@ button.timeline-content-switch:after {
   -webkit-transition-delay: 0s;
   transition: border 0.3s cubic-bezier(0.7, 0, 0.3, 1) 0s;
 }
-/* line 470, ../sass/screen.scss */
+/* line 472, ../sass/screen.scss */
 .is-content-open.show-content .timeline-slide.current h2 {
   -moz-transition: top 0.9s cubic-bezier(0.7, 0, 0.3, 1), color 0.3s linear 0.6s;
   -o-transition: top 0.9s cubic-bezier(0.7, 0, 0.3, 1), color 0.3s linear 0.6s;
@@ -659,7 +661,7 @@ button.timeline-content-switch:after {
   -webkit-transition-delay: 0s, 0.6s;
   transition: top 0.9s cubic-bezier(0.7, 0, 0.3, 1), color 0.3s linear 0.6s;
 }
-/* line 472, ../sass/screen.scss */
+/* line 474, ../sass/screen.scss */
 .is-content-open.show-content .timeline-slide.current h2 span {
   -moz-transition: color 0.3s linear 0.6s;
   -o-transition: color 0.3s linear 0.6s;
@@ -667,7 +669,7 @@ button.timeline-content-switch:after {
   -webkit-transition-delay: 0.6s;
   transition: color 0.3s linear 0.6s;
 }
-/* line 475, ../sass/screen.scss */
+/* line 477, ../sass/screen.scss */
 .is-content-open.show-content .timeline-slide.current h2:before {
   -moz-transition: border 0.3s cubic-bezier(0.7, 0, 0.3, 1) 0.6s;
   -o-transition: border 0.3s cubic-bezier(0.7, 0, 0.3, 1) 0.6s;
@@ -676,7 +678,7 @@ button.timeline-content-switch:after {
   transition: border 0.3s cubic-bezier(0.7, 0, 0.3, 1) 0.6s;
 }
 
-/* line 483, ../sass/screen.scss */
+/* line 485, ../sass/screen.scss */
 .timeline-slide.current h2:after {
   -moz-transition: width 0.3s cubic-bezier(0.7, 0, 0.3, 1) 0.6s;
   -o-transition: width 0.3s cubic-bezier(0.7, 0, 0.3, 1) 0.6s;
@@ -685,20 +687,20 @@ button.timeline-content-switch:after {
   transition: width 0.3s cubic-bezier(0.7, 0, 0.3, 1) 0.6s;
 }
 
-/* line 487, ../sass/screen.scss */
+/* line 489, ../sass/screen.scss */
 .show-content .timeline-slide.current h2 {
   top: 105%;
   color: #333;
 }
-/* line 490, ../sass/screen.scss */
+/* line 492, ../sass/screen.scss */
 .show-content .timeline-slide.current h2 span {
   color: #333;
 }
-/* line 493, ../sass/screen.scss */
+/* line 495, ../sass/screen.scss */
 .show-content .timeline-slide.current h2:before {
   border-top: 2px #333 solid;
 }
-/* line 496, ../sass/screen.scss */
+/* line 498, ../sass/screen.scss */
 .show-content .timeline-slide.current h2:after {
   width: 0;
   -moz-transition: width 0.3s cubic-bezier(0.7, 0, 0.3, 1) 0s;
@@ -709,7 +711,7 @@ button.timeline-content-switch:after {
 }
 
 /* Content */
-/* line 507, ../sass/screen.scss */
+/* line 509, ../sass/screen.scss */
 .js .pages {
   position: absolute;
   top: 100%;
@@ -722,7 +724,7 @@ button.timeline-content-switch:after {
   -webkit-transition-delay: 0.6s;
   transition: height 0s 0.6s;
 }
-/* line 515, ../sass/screen.scss */
+/* line 517, ../sass/screen.scss */
 .js .pages .content {
   position: absolute;
   top: 150px;
@@ -737,7 +739,7 @@ button.timeline-content-switch:after {
   transition: height 0s 0.6s;
 }
 
-/* line 527, ../sass/screen.scss */
+/* line 529, ../sass/screen.scss */
 .js .show-content .pages {
   height: auto;
   -moz-transition: none;
@@ -746,7 +748,7 @@ button.timeline-content-switch:after {
   transition: none;
 }
 
-/* line 533, ../sass/screen.scss */
+/* line 535, ../sass/screen.scss */
 .pages .content.show {
   height: auto;
   -moz-transition: none;
@@ -756,7 +758,7 @@ button.timeline-content-switch:after {
 }
 
 /* Switch */
-/* line 540, ../sass/screen.scss */
+/* line 542, ../sass/screen.scss */
 .switch-min .timeline-img-dragger-large .timeline-slide > *:not(.timeline-img-wrap), .switch-max .timeline-img-dragger-small .timeline-slide > *:not(.timeline-img-wrap) {
   /* fade out everything except image */
   opacity: 0;
@@ -766,7 +768,7 @@ button.timeline-content-switch:after {
   transition: none;
 }
 
-/* line 547, ../sass/screen.scss */
+/* line 549, ../sass/screen.scss */
 .switch-min .timeline-img-dragger-large, .switch-max .timeline-img-dragger-small {
   -moz-transition: -moz-transform 0.6s cubic-bezier(0.7, 0, 0.3, 1);
   -o-transition: -o-transform 0.6s cubic-bezier(0.7, 0, 0.3, 1);
@@ -774,43 +776,43 @@ button.timeline-content-switch:after {
   transition: transform 0.6s cubic-bezier(0.7, 0, 0.3, 1);
 }
 
-/* line 551, ../sass/screen.scss */
+/* line 553, ../sass/screen.scss */
 .timeline-img-dragger-small button.timeline-content-switch {
   pointer-events: none;
   opacity: 0;
 }
 
 /* Helper classes */
-/* line 557, ../sass/screen.scss */
+/* line 559, ../sass/screen.scss */
 .no-transition {
   -webkit-transition: none !important;
   transition: none !important;
 }
 
-/* line 562, ../sass/screen.scss */
+/* line 564, ../sass/screen.scss */
 .hide {
   pointer-events: none !important;
   opacity: 0 !important;
 }
 
 @media screen and (max-width: 63.125em) {
-  /* line 568, ../sass/screen.scss */
+  /* line 570, ../sass/screen.scss */
   .dragslider h2 {
     font-size: 2.8em;
   }
 
-  /* line 571, ../sass/screen.scss */
+  /* line 573, ../sass/screen.scss */
   .pages .content {
     font-size: 100%;
   }
 
-  /* line 574, ../sass/screen.scss */
+  /* line 576, ../sass/screen.scss */
   .pages .content h2 {
     font-size: 3em;
   }
 }
 @media screen and (max-width: 650px) {
-  /* line 580, ../sass/screen.scss */
+  /* line 582, ../sass/screen.scss */
   button.timeline-zoom-switch {
     display: none;
   }
