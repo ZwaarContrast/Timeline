@@ -64,19 +64,22 @@ html.js, .js body{
 	display: block;
 	width: 40px;
 	height: 40px;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: 10px;
+	@include opacity(0.8);
+	@include transition(opacity 0.3s linear);
 	&.timeline-arrow-navigation-arrow-next{
 		right: 0;
 		background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiIHZpZXdCb3g9IjQwLjUgMzAuNCAxOS4xIDM0LjEiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgNDAuNSAzMC40IDE5LjEgMzQuMSIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PGc+PHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTQxLjEsNjRjLTAuOC0wLjgtMC44LTIsMC0yLjhsMTMuNy0xMy43TDQxLjIsMzMuOGMtMC44LTAuOC0wLjgtMiwwLTIuOHMyLTAuOCwyLjgsMGwxNSwxNWMwLjgsMC44LDAuOCwyLDAsMi44TDQ0LDYzLjljLTAuNCwwLjQtMC45LDAuNi0xLjQsMC42UzQxLjYsNjQuMyw0MS4xLDY0eiIvPjwvZz48L3N2Zz4=);
-		background-repeat: no-repeat;
-		background-position: center center;
-		background-size: 10px;
 	}
 	&.timeline-arrow-navigation-arrow-previous{
 		left: 0;
 		background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiIHZpZXdCb3g9IjQwLjUgMzAuNCAxOS4xIDM0LjEiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgNDAuNSAzMC40IDE5LjEgMzQuMSIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PGc+PHBhdGggZmlsbD0iI0ZGRkZGRiIgZD0iTTU3LjUsNjQuNWMtMC41LDAtMS0wLjItMS40LTAuNmwtMTUtMTUuMWMtMC44LTAuOC0wLjgtMiwwLTIuOGwxNS0xNWMwLjgtMC44LDItMC44LDIuOCwwczAuOCwyLDAsMi44TDQ1LjMsNDcuNUw1OSw2MS4yYzAuOCwwLjgsMC44LDIsMCwyLjhDNTguNSw2NC4zLDU4LDY0LjUsNTcuNSw2NC41eiIvPjwvZz48L3N2Zz4=);
-		background-repeat: no-repeat;
-		background-position: center center;
-		background-size: 10px;
+	}
+
+	&:hover{
+		@include opacity(1);
 	}
 }
 
