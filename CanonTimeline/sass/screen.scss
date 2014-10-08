@@ -51,7 +51,6 @@ html.js, .js body{
 	}
 }
 
-
 .timeline-arrow-navigation-arrow{
 	position: absolute;
 	z-index: 100;
@@ -81,6 +80,12 @@ html.js, .js body{
 	&:hover{
 		@include opacity(1);
 		cursor:pointer;
+	}
+}
+
+.timeline-arrow-navigation.view-maxi{
+	.timeline-arrow-navigation-arrow{
+		top:75%;
 	}
 }
 
